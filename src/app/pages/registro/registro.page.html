@@ -23,7 +23,7 @@
 
           <ion-input formControlName="nombre" type="text" labelPlacement="stacked" label="Nombre" fill="outline"></ion-input>
 
-          <ion-input formControlName="correo" type="email" labelPlacement="stacked" label="Correo (@duocuc.cl)" fill="outline" placeHolder="correo@duocuc.cl"></ion-input>
+          <ion-input formControlName="correo" type="email" labelPlacement="stacked" label="Correo" fill="outline" placeHolder="ejemplo@correo.com"></ion-input>
 
           <ion-input formControlName="fecha_nacimiento" type="date" labelPlacement="stacked" label="Fecha de Nacimiento" fill="outline"></ion-input>
 
@@ -42,24 +42,6 @@
             <ion-select-option>Prefiero no decirlo</ion-select-option>
           </ion-select>
           <br>
-          <ion-item class="form-item tiene-auto-group">
-            <ion-label class="tiene-auto-label">¿Tiene Auto?</ion-label>
-            <ion-radio-group formControlName="tiene_auto">
-              <ion-item>
-                <ion-label>Sí</ion-label>
-                <ion-radio slot="start" value="si"></ion-radio>
-              </ion-item>
-              <ion-item>
-                <ion-label>No</ion-label>
-                <ion-radio slot="start" value="no"></ion-radio>
-              </ion-item>
-            </ion-radio-group>
-          </ion-item>
-
-            <ion-input *ngIf="persona.controls.tiene_auto.value==='si'" formControlName="patente_auto" type="text" label="Patente auto" labelPlacement="stacked" fill="outline"></ion-input>
-            <ion-input *ngIf="persona.controls.tiene_auto.value==='si'" formControlName="marca_auto" type="text" label="Marca auto" labelPlacement="stacked" fill="outline"></ion-input>
-            <ion-input *ngIf="persona.controls.tiene_auto.value==='si'" formControlName="color_auto" type="text" label="Color auto" labelPlacement="stacked" fill="outline"></ion-input>
-            <ion-input *ngIf="persona.controls.tiene_auto.value==='si'" formControlName="asientos_disponibles" type="number" label="Capacidad de pasajeros" labelPlacement="stacked" fill="outline"></ion-input>
           <ion-button size="block" [disabled]="persona.invalid" type="submit" color="secondary" shape="round">REGISTRARSE</ion-button>
           <br>
           <p class="ion-text-center">¿Ya tienes una cuenta? Ingresa <a routerLink="/login">aquí</a></p>

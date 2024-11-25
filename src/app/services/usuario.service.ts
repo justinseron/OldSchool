@@ -55,7 +55,7 @@ export class UsuarioService {
       "marca_auto": "Ford",
       "color_auto": "Azul",
       "asientos_disponibles": "4",
-      "tipo_usuario": "Conductor"
+      "tipo_usuario": "Colaborador"
     };
   
     let conductor2 = {
@@ -71,7 +71,7 @@ export class UsuarioService {
       "marca_auto": "Chevrolet",
       "color_auto": "Rojo",
       "asientos_disponibles": "4",
-      "tipo_usuario": "Conductor"
+      "tipo_usuario": "Colaborador"
     };
     let pasajero1 = {
       "rut": "5995618-3",
@@ -82,7 +82,7 @@ export class UsuarioService {
       "confirm_password": "Pasajero123.",
       "genero": "masculino",
       "tiene_auto": "no",
-      "tipo_usuario": "Pasajero"
+      "tipo_usuario": "Usuario"
     };
 
     let pasajero2 = {
@@ -94,7 +94,7 @@ export class UsuarioService {
       "confirm_password": "Pasajero123.",
       "genero": "femenino",
       "tiene_auto": "no",
-      "tipo_usuario": "Pasajero"
+      "tipo_usuario": "Usuario"
     };
 
     if (usuariosGuardados.length === 0) { // Solo agregar si no hay usuarios
@@ -109,13 +109,13 @@ export class UsuarioService {
   }
   public async getConductores(): Promise<any[]> {
     // Usar la lista actualizada en lugar de cargar de nuevo
-    return this.usuarios.filter(usuario => usuario.tipo_usuario === 'Conductor');
+    return this.usuarios.filter(usuario => usuario.tipo_usuario === 'Colaborador');
   }
   public getConductorPorNombre(nombre: string): any {
-    return this.usuarios.find(usuario => usuario.nombre === nombre && usuario.tipo_usuario === 'Conductor');
+    return this.usuarios.find(usuario => usuario.nombre === nombre && usuario.tipo_usuario === 'Colaborador');
   }
   public async getPasajeros(): Promise<any[]> {
-    return this.usuarios.filter(usuario => usuario.tipo_usuario === 'Pasajero');
+    return this.usuarios.filter(usuario => usuario.tipo_usuario === 'Usuario');
   }
   public getConductorData(nombre: string): Observable<any> {
     return this.httpClient.get<any>(`/api/conductores/${nombre}`);

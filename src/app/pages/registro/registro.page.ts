@@ -15,21 +15,13 @@ export class RegistroPage implements OnInit {
   persona = new FormGroup({
     rut: new FormControl('',[Validators.minLength(9),Validators.maxLength(10),Validators.required,Validators.pattern("[0-9]{7,8}-[0-9kK]{1}")]),
     nombre: new FormControl('',[Validators.required,Validators.maxLength(20),Validators.pattern("^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\\s]+$") ]),
-    correo: new FormControl('',[Validators.required, Validators.pattern("[a-zA-Z0-9.]+(@duocuc.cl)")]),
+    correo: new FormControl('',[Validators.required, Validators.pattern("[a-zA-Z0-9.]")]),
     fecha_nacimiento: new FormControl('',[Validators.required]),
     password: new FormControl('',[Validators.required, Validators.pattern("^(?=.*[-!#$%&/()?¡_.])(?=.*[A-Za-z])(?=.*[a-z]).{8,}$")]),
     confirm_password: new FormControl('',[Validators.required, Validators.pattern("^(?=.*[-!#$%&/()?¡_.])(?=.*[A-Za-z])(?=.*[a-z]).{8,}$")]),
     genero: new FormControl('',[Validators.required]),
-    tiene_auto : new FormControl('no',[]),
-    patente_auto : new FormControl('',[ Validators.pattern("^[A-Z0-9.-]*$"),Validators.maxLength(8)]),
-    marca_auto: new FormControl('',[]),
-    color_auto: new FormControl('',[]),
-    asientos_disponibles: new FormControl('', [
-      Validators.min(2),  // Mayor a 1
-      Validators.max(6) // Menor a 7
-        // Campo requerido si el usuario tiene auto
-    ]),
-    tipo_usuario: new FormControl('Pasajero'),
+    es_colaborador : new FormControl('no',[]),
+    tipo_usuario: new FormControl('Usuario'),
   });
 
   fotoPerfil: string = 'assets/images/perfildefault.png';
@@ -62,7 +54,7 @@ export class RegistroPage implements OnInit {
       await this.mostrarAlerta("Error", "¡Las contraseñas no coinciden!");
       return;
     }
-    this.persona.controls.tipo_usuario.setValue(this.persona.controls.tiene_auto.value === "si" ? "Conductor" : "Pasajero");
+    this.persona.controls.tipo_usuario.setValue(this.persona.controls.es_colaborador.value === "si" ? "Colaborador" : "Usuario");
   
     if (await this.usuarioService.createUsuario(this.persona.value)) {
       this.router.navigate(['/login']);

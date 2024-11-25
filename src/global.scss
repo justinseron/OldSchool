@@ -5,9 +5,9 @@ ion-header {
   
   /* Estilo para el ion-toolbar */
   ion-toolbar.custom-toolbar {
-    background: linear-gradient(135deg, #002f6c, #0072e5) !important; /* Gradiente azul de oscuro a claro */
-    --background: linear-gradient(135deg, #002f6c, #0072e5) !important; /* Asegura que el fondo del toolbar sea el gradiente */
-    border-bottom: 2px solid #002f6c !important; /* Línea inferior para un acabado elegante */
+    background: linear-gradient(135deg, #fdcc8c, #fd9635) !important; /* Gradiente azul de oscuro a claro */
+    --background: linear-gradient(135deg, #fdcc8c, #fd9635) !important; /* Asegura que el fondo del toolbar sea el gradiente */
+    border-bottom: 2px solid #fd9635 !important; /* Línea inferior para un acabado elegante */
   }
   
   /* Estilo para el título del toolbar */
@@ -26,7 +26,7 @@ ion-header {
   
   /* Estilo para el ion-content */
   ion-content {
-    --background: linear-gradient(to bottom, #9eb6d8, #0072e5) !important; /* Gradiente de azul oscuro a azul más claro */
+    --background: linear-gradient(to bottom, #fdcc8c, #fd9635) !important; /* Gradiente de azul oscuro a azul más claro */
     padding: 0 !important; /* Elimina el padding predeterminado */
   }
   

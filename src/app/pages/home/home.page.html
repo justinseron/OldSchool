@@ -14,7 +14,7 @@
     </ion-buttons>
 
     <ion-title class="toolbar-title">
-      <a [routerLink]="['']" class="title-link">MoveGo</a>
+      <a [routerLink]="['']" class="title-link">OldSchool</a>
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -28,7 +28,6 @@
       </ion-card-header>
       <ion-card-content>
         <p><strong>Correo Electrónico:</strong> {{ usuario.correo }}</p>
-        <p><strong>Tipo de Usuario:</strong> {{ usuario.tipo_usuario | titlecase }}</p>
       </ion-card-content>
     </ion-card>
   </div>
@@ -36,7 +35,7 @@
     <ion-card class="welcome-card">
       <img src="../../../assets/images/logo.png" alt="Imagen de Bienvenida" class="welcome-image" style="height: 40px ; width:40px ; text-align: center; position: relative;">
       <ion-card-header>
-        <ion-card-title class="welcome-title">✨ ¡Bienvenido a MoveGo! 🚗💨</ion-card-title>
+        <ion-card-title class="welcome-title">¡Bienvenido a OldSchool!</ion-card-title>
       </ion-card-header>
       <ion-card-content>
       </ion-card-content>
@@ -45,21 +44,21 @@
 
   <ion-tabs class="-tabs">
     <ion-tab-bar slot="bottom" class="tab-bar">
-      <ion-tab-button tab="mis-viajes" *ngIf="usuario.tipo_usuario === 'Conductor'">
+      <ion-tab-button tab="mis-viajes" *ngIf="usuario.tipo_usuario === 'Colaborador'">
         <ion-icon name="person-outline"></ion-icon>
-        <span class="tab-label">Mis viajes</span>
+        <span class="tab-label">Mis talleres</span>
       </ion-tab-button>
-      <ion-tab-button tab="administrar-viajes" *ngIf="usuario.tipo_usuario === 'Administrador' || usuario.tipo_usuario === 'Conductor'">
+      <ion-tab-button tab="administrar-viajes" *ngIf="usuario.tipo_usuario === 'Administrador' || usuario.tipo_usuario === 'Colaborador'">
         <ion-icon name="business-outline"></ion-icon>
-        <span class="tab-label">Administrar Viajes</span>
+        <span class="tab-label">Administrar Talleres</span>
       </ion-tab-button>
-      <ion-tab-button tab="viajes" *ngIf="usuario.tipo_usuario === 'Pasajero'">
+      <ion-tab-button tab="viajes" *ngIf="usuario.tipo_usuario === 'Usuario'">
         <ion-icon name="car-sport-outline"></ion-icon>
-        <span class="tab-label">Viajes</span>
+        <span class="tab-label">Talleres</span>
       </ion-tab-button>
-      <ion-tab-button tab="viajes-terminados" *ngIf="usuario.tipo_usuario === 'Pasajero'">
+      <ion-tab-button tab="viajes-terminados" *ngIf="usuario.tipo_usuario === 'Usuario'">
         <ion-icon name="car-sport-outline"></ion-icon>
-        <span class="tab-label">Historial Viajes</span>
+        <span class="tab-label">Historial Talleres</span>
       </ion-tab-button>
       <ion-tab-button tab="administrador" *ngIf="usuario.tipo_usuario === 'Administrador'">
         <ion-icon name="business-outline"></ion-icon>
