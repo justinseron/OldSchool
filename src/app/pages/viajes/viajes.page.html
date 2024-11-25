@@ -1,0 +1,81 @@
+<ion-content>
+  <!-- Contenedor principal -->
+  <ion-list class="ion-margin">
+    <div class="ion-margin">
+
+      <!-- Segmento para selección de tipo de viaje -->
+      <ion-segment mode="ios" value="basico" (ionChange)="onSegmentChange($event)" color="primary">
+        <ion-segment-button value="basico">
+          <ion-label>Mis Viajes</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="priority">
+          <ion-label>Viajes Disponibles</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+
+      <!-- Barra de búsqueda -->
+      <ion-searchbar
+        (ionInput)="onSearch($event)"
+        placeholder="Buscar Destino..."
+        id="busquedaDestinos"
+        style="--background: #ebebff; --placeholder-color: #000000; --input-padding-start: 12px; --padding-start: 12px;">
+      </ion-searchbar>
+
+      <!-- Sección "Mis Viajes" -->
+      <ng-container *ngIf="isBasicoSelected; else disponiblesSection">
+        <ion-text class="ion-text-center ion-margin-top">
+          <div class="ion-padding">
+            <ng-container *ngIf="misViajes && misViajes.length > 0; else noHayViajes">
+              <div *ngFor="let viaje of misViajes">
+                <ion-card *ngIf="viaje && viaje.nombre_destino && viaje.asientos_disponibles !== undefined">
+                  <ion-card-header>
+                    <ion-card-title>{{ viaje.nombre_destino | titlecase }}</ion-card-title>
+                  </ion-card-header>
+                  <ion-card-content>
+                    <p>Asientos Disponibles: {{ viaje.asientos_disponibles }}</p>
+                    <p>Precio: {{ (viaje.distancia_metros / 200 * 100) | currency:'CLP' }}</p>
+                  </ion-card-content>
+                  <ion-button (click)="ver(viaje)" size="block">Ver Detalle</ion-button>
+                </ion-card>
+              </div>
+            </ng-container>
+          </div>
+        </ion-text>
+      </ng-container>
+      
+
+      <!-- Sección "Viajes Disponibles" -->
+      <ng-template #disponiblesSection>
+        <ion-text class="ion-text-center ion-margin-top">
+          <p style="font-size: 16px; color: #061b30;">Explora todos los viajes disponibles en MoveGo</p>
+        </ion-text>
+        <div class="ion-padding" *ngFor="let viaje of viajesDisponibles">
+          <ion-card *ngIf="viaje && viaje.estado_viaje === 'pendiente'">
+            <ion-card-header>
+              <ion-card-title>{{ viaje.nombre_destino }}</ion-card-title>
+              <ion-card-subtitle>Conductor: {{ viaje.conductor | titlecase }}</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+              <p>Asientos Disponibles: {{ viaje.asientos_disponibles }}</p>
+              <p>Precio: {{ (viaje.distancia_metros / 200 * 100) | currency:'CLP' }}</p>
+            </ion-card-content>
+            <ion-button (click)="ver(viaje)" size="block" [disabled]="viaje.asientos_disponibles === 0">
+              Ver Detalle
+            </ion-button>
+          </ion-card>
+        </div>
+      </ng-template>
+      
+
+      <!-- Mensaje cuando no hay viajes -->
+      <ng-template #noHayViajes>
+        <ion-item>
+          <ion-label>
+            <h2>No hay viajes disponibles.</h2>
+          </ion-label>
+        </ion-item>
+      </ng-template>
+
+    </div>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,66 @@
+.viaje-card {
+  margin: 10px 0; /* Espaciado entre tarjetas */
+  width: 100%; /* Ocupa el 100% del ancho del contenedor */
+  transition: transform 0.2s; /* Efecto de transición al pasar el ratón */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+  border-radius: 12px; /* Bordes redondeados */
+  background-color: #ffffff; /* Fondo blanco para una apariencia limpia */
+}
+
+.viaje-card:hover {
+  transform: translateY(-3px); /* Levanta ligeramente la tarjeta al pasar el ratón */
+}
+
+.contenido-card {
+  padding: 15px; /* Espaciado interno */
+}
+
+.info-row {
+  display: flex; /* Usar flexbox para alinear el contenido */
+  justify-content: space-between; /* Espacio entre label y value */
+  margin: 8px 0; /* Espaciado vertical entre filas */
+  border-bottom: 1px solid #e0e0e0; /* Línea divisoria entre filas */
+  padding-bottom: 8px; /* Espacio inferior */
+}
+
+.info-row:last-child {
+  border-bottom: none; /* Eliminar la línea divisoria de la última fila */
+}
+
+.label {
+  font-weight: bold; /* Negrita para las etiquetas */
+  color: #555; /* Color oscuro para las etiquetas */
+}
+
+.value {
+  color: #333; /* Color de texto para los valores */
+}
+
+.pasajeros {
+  margin-top: 10px; /* Espacio superior para separar de los detalles del viaje */
+}
+
+.pasajero-item {
+  font-size: 0.9em; /* Tamaño de fuente más pequeño para los pasajeros */
+  color: #555; /* Color gris para los nombres de los pasajeros */
+  padding: 10px; /* Espaciado interno para los elementos de pasajeros */
+  display: flex; /* Usar flexbox para alinear los elementos */
+  align-items: center; /* Centrar verticalmente el contenido */
+}
+
+.pasajero-item ion-label {
+  flex-grow: 1; /* Permitir que el label crezca para ocupar el espacio disponible */
+}
+
+.pasajero-item .icon {
+  font-size: 1.2em; /* Tamaño de ícono más grande */
+  margin-right: 8px; /* Espacio a la derecha del ícono */
+  color: #007aff; /* Color azul para el ícono */
+}
+
+.sin-pasajeros {
+  color: #888; /* Color gris para el mensaje de sin pasajeros */
+  font-style: italic; /* Estilo de fuente itálica para el mensaje */
+  text-align: center; /* Centra el mensaje */
+  margin: 10px 0; /* Espacio vertical alrededor del mensaje */
+}

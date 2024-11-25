@@ -1,0 +1,25 @@
+.detalles-viaje{
+  border-radius: 20px;
+  top: 10%;
+}
+
+#logo{
+  position: relative;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  max-width: 200px;
+}
+
+.my-custom-alert .alert-message,
+.my-custom-alert .alert-header {
+text-align: center; //Centrar el texto
+}
+
+.my-custom-alert .alert-buttons {
+justify-content: center; //Centrar los botones
+}
+#map {
+  height: 30vh;
+  width: 100%;
+}

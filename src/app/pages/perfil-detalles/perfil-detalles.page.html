@@ -1,0 +1,51 @@
+<ion-content>
+  <ion-card *ngIf="usuarioLogueado">
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">Perfil de Usuario</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="stacked">Nombre:</ion-label>
+        <ion-input [(ngModel)]="usuarioLogueado.nombre"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Correo:</ion-label>
+        <ion-input type="email" [(ngModel)]="usuarioLogueado.correo" (ngModelChange)="validarCorreo()" required></ion-input>
+      </ion-item>
+      <ion-note *ngIf="correoInvalido" color="danger">Solo correo institucional</ion-note>
+      
+      <ion-item>
+        <ion-label position="stacked">Fec. Nacimiento:</ion-label>
+        <ion-input type="date" [(ngModel)]="usuarioLogueado.fecha_nacimiento" (ngModelChange)="validarFechaNacimiento()" required></ion-input>
+      </ion-item>
+      <ion-note *ngIf="fechaInvalida" color="danger">Debes ser mayor de 18 años</ion-note>
+      <ion-item>
+        <ion-label position="stacked">Género:</ion-label>
+        <ion-select [(ngModel)]="usuarioLogueado.genero">
+          <ion-select-option value="masculino">Masculino</ion-select-option>
+          <ion-select-option value="femenino">Femenino</ion-select-option>
+          <ion-select-option value="otro">Otro</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <!-- Solo muestra los campos del auto si el usuario tiene auto -->
+      <ion-item *ngIf="usuarioLogueado.tiene_auto === 'si'">
+        <ion-label position="stacked">Patente del Auto:</ion-label>
+        <ion-input [(ngModel)]="usuarioLogueado.patente_auto"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="usuarioLogueado.tiene_auto === 'si'">
+        <ion-label position="stacked">Marca del Auto:</ion-label>
+        <ion-input [(ngModel)]="usuarioLogueado.marca_auto"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="usuarioLogueado.tiene_auto === 'si'">
+        <ion-label position="stacked">Color del Auto:</ion-label>
+        <ion-input [(ngModel)]="usuarioLogueado.color_auto"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="usuarioLogueado.tiene_auto === 'si'">
+        <ion-label position="stacked">Asientos Disponibles:</ion-label>
+        <ion-input type="number" [(ngModel)]="usuarioLogueado.asientos_disponibles"></ion-input>
+      </ion-item>
+      <ion-button size="block" color="secondary" (click)="guardarCambios()">Guardar Cambios</ion-button>
+      <ion-button size="block" color="light" (click)="volver()">Volver</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

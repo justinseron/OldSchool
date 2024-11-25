@@ -1,0 +1,53 @@
+#map_html{
+  height: 70vh;
+  width: 100%;
+  //margin: 10% 10% 10% 10%
+}
+
+ion-content {
+    --background: #f4f7f9; /* Fondo de la página */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #iframe {
+    border: 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  ion-segment {
+    margin: 16px 0;
+    --background: #e6f0ff; /* Fondo del segmento */
+    --color-checked: #004d99; /* Color del texto seleccionado */
+    --color: #007bff; /* Color del texto no seleccionado */
+  }
+  
+  ion-segment-button {
+    --background: #ffffff; /* Fondo del botón */
+    --border-color: #004d99; /* Borde del botón */
+  }
+  
+  ion-text {
+    color: #004d99; /* Color del texto */
+  }
+  
+  ion-searchbar {
+    --background: #e6f0ff; /* Fondo de la barra de búsqueda */
+    --placeholder-color: #007bff; /* Color del texto del placeholder */
+    --input-padding-start: 12px; /* Padding del input */
+    --padding-start: 12px; /* Padding del input en el contenedor */
+  }
+  
+  ion-item {
+    border-radius: 8px;
+    margin-bottom: 8px;
+    background-color: #ffffff; /* Fondo del ítem */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra del ítem */
+  }
+  
+  ion-item ion-label {
+    color: #003d99; /* Color del texto en los ítems de la lista */
+  }
+  

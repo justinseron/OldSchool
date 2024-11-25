@@ -1,0 +1,157 @@
+.input-error {
+  --highlight-color-invalid: #ff4d4f; /* Color rojo para el borde */
+  border: 1px solid #ff4d4f; /* Borde rojo */
+}
+
+.error-message {
+  color: #ff4d4f; /* Color rojo para el mensaje de error */
+  font-size: 12px; /* Tamaño del texto del mensaje de error */
+  margin-top: 5px; /* Espacio entre el campo y el mensaje de error */
+}
+
+
+/* Estilos para el formulario */
+.form-card {
+    --background: #f9f9f9;
+    --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-item {
+    margin-bottom: 16px;
+  }
+  
+  ion-card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  ion-button {
+    border-radius: 20px;
+  }
+  
+  .user-list-container {
+    padding: 16px;
+  }
+  
+  ion-avatar {
+    margin-right: 16px;
+  }
+  
+  ion-item {
+    --padding-start: 16px;
+    --padding-end: 16px;
+    --inner-padding-end: 0;
+    --border-color: #e0e0e0;
+  }
+  
+  ion-item h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  
+  ion-item p {
+    color: #666;
+    font-size: 0.9rem;
+  }
+  
+  ion-img {
+    display: block;
+    margin: 20px auto;
+    max-width: 100%;
+  }
+  
+  /* Estilos personalizados para los botones de selección "Sí" y "No" */
+  .radio-group {
+    display: flex;
+    gap: 20px; /* Espaciado entre los botones */
+    align-items: center;
+  }
+  
+  .custom-radio-button {
+    --border-radius: 20px;
+    --padding: 10px 20px;
+    --margin: 5px;
+    --border: 2px solid #6c757d; /* Color base del borde */
+    --background: transparent; /* Sin color de fondo */
+    --color: #6c757d; /* Color del texto */
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave */
+  }
+  
+  /* Botón "Sí" */
+  .yes-button {
+    --border-color: #6c757d; /* Color base del borde */
+  }
+  
+  .yes-button.selected {
+    --background: #6c757d; /* Color de fondo plomo oscuro cuando seleccionado */
+    --color: #fff; /* Color del texto cuando seleccionado */
+  }
+  
+  /* Botón "No" */
+  .no-button {
+    --border-color: #6c757d; /* Color base del borde */
+  }
+  
+  .no-button.selected {
+    --background: #6c757d; /* Color de fondo plomo oscuro cuando seleccionado */
+    --color: #fff; /* Color del texto cuando seleccionado */
+  }
+  
+  .custom-radio-button:hover {
+    --background: #e0e0e0; /* Color de fondo al pasar el cursor */
+    --color: #333; /* Color del texto al pasar el cursor */
+  }
+  #soon {
+    --background: #f7f7f7;
+    margin: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  #soon img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+  }
+  
+  ion-card-title, ion-card-subtitle {
+    text-align: center;
+    color: #333;
+  }
+  
+  ion-card-title {
+    font-size: 2rem; /* Aumentado para mejorar la legibilidad */
+    margin-top: 10px;
+  }
+  
+  ion-card-subtitle {
+    font-size: 1.4rem; /* Subtítulo más grande */
+    color: #777;
+  }
+  
+  ion-card-content {
+    font-size: 1.6rem; /* Aumentado el contenido para mayor legibilidad */
+    text-align: center;
+    color: #555;
+    padding: 16px;
+  }
+  
+  @media (min-width: 768px) {
+    #soon {
+      margin: 40px;
+    }
+    ion-card-title {
+      font-size: 2.5rem;
+    }
+    ion-card-subtitle {
+      font-size: 1.8rem;
+    }
+    ion-card-content {
+      font-size: 1.8rem;
+    }
+  }

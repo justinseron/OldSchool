@@ -1,0 +1,166 @@
+
+
+
+.custom-toolbar {
+  background-color: #4CAF50; /* Verde para el toolbar */
+  color: white;
+}
+
+.user-status {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Espacio entre la luz y el texto */
+}
+
+.status-light {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #28a745; /* Verde para indicar "conectado" */
+  border: 2px solid white; /* Borde blanco */
+}
+
+.user-type {
+  font-size: 16px;
+  font-weight: 600;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo negro semi-transparente */
+  padding: 5px 10px; /* Espaciado alrededor del texto */
+  border-radius: 12px; /* Bordes redondeados */
+  color: white; /* Texto en blanco */
+  font-weight: bold; /* Texto grueso */
+  font-size: 14px; /* Tamaño de letra */
+}
+
+.logo-img {
+  width: 40px;
+  height: auto;
+}
+
+.title-link {
+  font-size: 20px;
+  font-weight: 600;
+  color: white; /* Letras blancas */
+  text-decoration: none;
+}
+
+.title-link:hover {
+  color: #cccccc; /* Color más claro al hacer hover */
+}
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+/* -- Tabs Estilos -- */
+.fixed-tabs {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+ion-content {
+  padding-bottom: 60px; /* Espacio para tabs */
+}
+
+.tab-bar {
+  background-color: #f8f9fa;
+  border-top: 1px solid #e0e0e0;
+}
+
+.tab-label {
+  font-size: 1rem;
+  color: #333;
+}
+
+ion-tab-button {
+  color: #007bff;
+}
+
+ion-tab-button[aria-selected="true"] .tab-label {
+  color: #007bff;
+}
+
+/* -- Card Estilos -- */
+ion-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+}
+
+ion-card img {
+  width: 100%;
+  height: auto; /* Ajuste automático para que la imagen mantenga su proporción */
+}
+
+ion-card-header {
+  background-color: #f7f7f7;
+  padding: 16px;
+  text-align: center;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+ion-card-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+}
+
+ion-card-subtitle {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+ion-card-content {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #333;
+  padding: 16px;
+  text-align: center;
+}
+
+/* -- Bienvenida Estilos -- */
+
+
+
+.welcome-card {
+  border-radius: 12px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-title {
+  font-size: 1.5rem;
+}
+
+.welcome-text {
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+/* -- Estilos para el footer -- */
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #002f6c;
+  color: #ffffff;
+  text-align: center;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-logo {
+  height: 20px;
+  width: auto;
+}
+
+.footer-text {
+  font-size: 0.9rem;
+}

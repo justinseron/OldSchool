@@ -1,0 +1,26 @@
+<ion-content>
+  <h2 class="titulo-viajes">Viajes Terminados</h2>
+  
+  <ion-list *ngIf="viajesTerminados.length > 0; else noHayViajes">
+    <ion-item *ngFor="let viaje of viajesTerminados" class="item-viaje" detail>
+      <ion-label>
+        <h3 class="destino">{{ viaje.nombre_destino }}</h3>
+        <p class="conductor">Conductor: {{ viaje.conductor }}</p>
+        <p class="estado">Estado: {{ viaje.estado_viaje }}</p>
+      </ion-label>
+      <ion-icon name="checkmark-circle" slot="end" color="success"></ion-icon>
+    </ion-item>
+  </ion-list>
+
+  <ng-template #noHayViajes>
+    <ion-card class="card-sin-viajes">
+      <ion-card-header>
+        <ion-card-title>No hay viajes terminados</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-icon name="alert-circle" slot="start" color="warning" class="icon-alert"></ion-icon>
+        <p class="mensaje-sin-viajes">Aún no has completado ningún viaje.</p>
+      </ion-card-content>
+    </ion-card>
+  </ng-template>
+</ion-content>

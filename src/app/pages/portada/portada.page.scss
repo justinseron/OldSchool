@@ -1,0 +1,63 @@
+.portada-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ocupa toda la altura de la pantalla */
+}
+
+.portada-container {
+  text-align: center;
+  position: relative;
+}
+
+.logo-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.portada-image {
+  width: 150px; /* Tamaño del logo */
+  position: absolute;
+  top: 50vh;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centra la imagen */
+  z-index: 1; /* La imagen estará encima del spinner */
+}
+
+.spinner {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  top: 50vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  
+  /* Cambia el grosor del spinner usando --spinner-width */
+  --spinner-width: 2px; /* Ajusta el grosor aquí */
+  --spinner-color: rgba(105, 125, 145, 0.5); /* Color del spinner con 50% de transparencia */
+}
+
+
+/* Ajusta el tamaño y la posición del texto debajo del logo */
+.portada-label {
+  position: absolute;
+  left: 50%;
+  top: 61vh; /* Ajusta para separarlo del logo */
+  transform: translate(-50%, -50%);
+  font-size: 24px; /* Tamaño de texto más pequeño que el logo, ajustable según lo visual */
+  font-weight: bold; /* Hace que el texto sea más visible */
+  color: white; /* Color gris para hacerlo más suave y elegante */
+  letter-spacing: 1px; /* Espaciado entre letras para mejorar la legibilidad */
+}
+
+.footer {
+  position: absolute;
+  bottom: 100px;
+  width: 100%;
+  text-align: center;
+}

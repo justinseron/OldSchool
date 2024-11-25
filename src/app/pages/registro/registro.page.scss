@@ -1,0 +1,50 @@
+ion-content {
+  --background: linear-gradient(#25698e, #f7f0fd);
+}
+
+#registrouser {
+  display: flex;
+  flex-direction: column; /* Se organiza verticalmente */
+  align-items: center;
+  justify-content: flex-start; /* El contenido empieza desde arriba */
+  padding: 20px; /* Espacio alrededor del contenido */
+}
+
+#formRegistro {
+  margin-top: 20px; /* Margen superior para separarlo del logo */
+  margin-bottom: 20px; /* Añadir margen inferior para que no llegue al final de la pantalla */
+  width: 100%;
+  max-width: 400px; /* Limitar el ancho máximo del formulario */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Añadir un pequeño sombreado */
+  border-radius: 10px; /* Bordes redondeados */
+}
+
+#logo {
+  margin-top: 50px; /* Se asegura que esté separado del borde superior */
+  margin-bottom: 10px; /* Espacio entre el logo y el formulario */
+  max-width: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#botonRegistro {
+  margin-top: 10px; /* Asegurar un margen superior pequeño para el botón */
+}
+
+#labelAuto{
+  margin-bottom: 16px;
+}
+
+ion-input{
+  margin-bottom: 16px;
+}
+
+#imagen-perfil {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%; /* Imagen redonda */
+  object-fit: cover; /* Mantiene proporciones de la imagen */
+  margin-top: 20px;
+  border: 2px solid #ccc; /* Borde suave */
+}

@@ -1,0 +1,60 @@
+.titulo-viajes {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 28px; /* Tamaño de fuente mayor para más impacto */
+    color: #4a90e2; /* Color azul suave */
+    font-weight: bold; /* Negrita para más énfasis */
+  }
+  
+  .item-viaje {
+    background-color: #ffffff; /* Fondo blanco para cada item */
+    border-radius: 10px; /* Bordes redondeados */
+    margin: 10px 0; /* Espaciado entre items */
+    padding: 15px; /* Espaciado interno */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: transform 0.2s; /* Transición suave */
+  }
+  
+  .item-viaje:hover {
+    transform: translateY(-5px); /* Elevación al pasar el ratón */
+  }
+  
+  .destino {
+    font-weight: bold;
+    font-size: 20px; /* Aumentar tamaño del destino */
+    color: #333; /* Color oscuro para mejor legibilidad */
+  }
+  
+  .conductor {
+    color: #777; /* Color gris suave para el texto del conductor */
+    font-size: 15px; /* Tamaño de fuente más grande */
+    margin-top: 5px; /* Espaciado superior */
+  }
+  
+  .estado {
+    font-size: 14px; /* Tamaño de fuente para estado */
+    color: #aaa; /* Color gris claro */
+  }
+  
+  .card-sin-viajes {
+    background-color: #f4f4f4; /* Fondo gris claro */
+    border: none; /* Sin borde */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+    margin: 20px; /* Margen alrededor de la carta */
+    text-align: center; /* Centrar el texto */
+  }
+  
+  .icon-alert {
+    font-size: 60px; /* Tamaño mayor para el ícono de alerta */
+    margin: 0 auto; /* Centrar el ícono */
+    display: block; /* Para centrar */
+    color: #f39c12; /* Color amarillo del ícono */
+  }
+  
+  .mensaje-sin-viajes {
+    color: #666; /* Color gris para el mensaje */
+    font-size: 16px; /* Tamaño de fuente del mensaje */
+    margin-top: 10px; /* Espaciado superior */
+  }
+  

@@ -1,0 +1,21 @@
+ion-content {
+    --background: linear-gradient(#25698e, #f7f0fd);
+  
+  }
+  
+  #loginuser{
+    height: 75%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+  }
+  
+  #logo{
+    position: relative;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    max-width: 200px;
+  }
+
+  

@@ -1,0 +1,59 @@
+<ion-content>
+  <!-- Sección de la foto de perfil y el nombre de usuario -->
+  <div class="ion-text-center" id="foto-perfil">
+    <img [src]="fotoPerfil" alt="Foto de perfil" id="imagen-perfil" (click)="fileInput.click()">
+    <h1 id="labelNombre">{{ usuario.nombre | titlecase }}</h1>
+    <input type="file" accept="=images/*" (change)="cambiarFotoPerfil($event)" hidden #fileInput>
+  </div>
+
+  <div id="detalles-perfil">
+    <ion-card id="card-detalles-perfil">
+      <ion-card-content>
+        <ion-list>
+          <!-- Sección: Perfil -->
+          <h2 class="labelDetalles">Perfil</h2>
+          <ion-item (click)="irAPerfil()">
+            <ion-icon name="person" slot="start"></ion-icon>
+            <ion-label>{{usuario.tipo_usuario | titlecase }}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="shield" slot="start"></ion-icon>
+            <ion-label>Contraseña y Seguridad</ion-label>
+          </ion-item>
+
+          <!-- Espacio entre secciones -->
+          <div class="spacer"></div>
+
+          <!-- Sección: Información Personal -->
+          <h2 class="labelDetalles">Información Personal</h2>
+          <ion-item>
+            <ion-icon name="albums" slot="start"></ion-icon>
+            <ion-label>Datos Personales</ion-label>
+          </ion-item>
+          <ion-item (click)="irAViajesTerminados()">
+            <ion-icon name="time" slot="start"></ion-icon>
+            <ion-label>Viajes</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="card" slot="start"></ion-icon>
+            <ion-label>Métodos de Pago</ion-label>
+          </ion-item>
+
+          <!-- Espacio entre secciones -->
+          <div class="spacer"></div>
+
+          <!-- Sección: MoveGo -->
+          <h2 class="labelDetalles">MoveGo</h2>
+          <ion-item>
+            <ion-icon name="information-circle" slot="start"></ion-icon>
+            <ion-label>Legal</ion-label>
+          </ion-item>
+          <ion-item (click)="confirmarCerrar()">
+            <ion-icon name="log-out-outline" slot="start"></ion-icon>
+            <ion-label>Cerrar Sesión</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

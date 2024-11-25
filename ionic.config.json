@@ -1,0 +1,7 @@
+{
+  "name": "MoveGo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

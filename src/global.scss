@@ -1,0 +1,135 @@
+/* Estilo para el ion-header */
+ion-header {
+    --background: transparent; /* Fondo transparente para permitir el gradiente del body */
+  }
+  
+  /* Estilo para el ion-toolbar */
+  ion-toolbar.custom-toolbar {
+    background: linear-gradient(135deg, #002f6c, #0072e5) !important; /* Gradiente azul de oscuro a claro */
+    --background: linear-gradient(135deg, #002f6c, #0072e5) !important; /* Asegura que el fondo del toolbar sea el gradiente */
+    border-bottom: 2px solid #002f6c !important; /* Línea inferior para un acabado elegante */
+  }
+  
+  /* Estilo para el título del toolbar */
+  ion-title.toolbar-title {
+    color: #ffffff !important; /* Blanco para el título */
+    font-size: 1.5rem !important; /* Tamaño de fuente ajustado */
+    font-weight: bold !important; /* Negrita para el título */
+  }
+  
+  /* Estilo para el logo */
+  #logomenu {
+    height: 60px !important;
+    width: auto !important;
+    object-fit: contain !important;
+  }
+  
+  /* Estilo para el ion-content */
+  ion-content {
+    --background: linear-gradient(to bottom, #9eb6d8, #0072e5) !important; /* Gradiente de azul oscuro a azul más claro */
+    padding: 0 !important; /* Elimina el padding predeterminado */
+  }
+  
+  /* Estilo para el ion-tab-bar */
+  ion-tab-bar {
+    background: #000000 !important; /* Fondo negro para el tab bar */
+    border-top: 2px solid #f0dd0e !important; /* Línea superior en azul más claro para destacar el tab bar */
+  }
+  
+  /* Estilo para los ion-tab-button */
+  ion-tab-button {
+    color: #000000 !important; /* Color blanco para los íconos y texto por defecto */
+    font-size: 0.9rem !important; /* Tamaño de fuente ajustado */
+    transition: color 0.3s, transform 0.3s !important; /* Animación para el cambio de color y tamaño */
+  }
+  
+  /* Estilo para el ion-tab-button cuando está seleccionado */
+  ion-tab-button.tab-selected {
+    color: #3c00ff !important; /* Azul claro para el icono y texto seleccionado */
+    transform: scale(1.1) !important; /* Aumentar ligeramente el tamaño del icono cuando está seleccionado */
+    border-bottom: 3px solid #0072e5 !important; /* Línea de fondo azul claro para indicar selección */
+  }
+  
+  /* Estilo para las etiquetas de los tab-button */
+  .tab-label {
+    font-size: 0.8rem !important; /* Tamaño de fuente ajustado para las etiquetas */
+    color: #000000 !important; /* Blanco para las etiquetas */
+  }
+  
+  /* Estilo para los iconos dentro del tab-button */
+  ion-icon {
+    font-size: 1.2rem !important; /* Tamaño de icono ajustado */
+  }
+  ion-alert.custom-alert {
+    --backdrop-opacity: 0.7;
+  }
+  
+  .custom-alert .alert-button-group {
+    padding: 8px;
+  }
+  
+  button.alert-button.alert-button-confirm {
+    background-color: var(--ion-color-success);
+    color: var(--ion-color-success-contrast);
+  }
+  
+  .md button.alert-button.alert-button-confirm {
+    border-radius: 4px;
+  }
+  
+  .ios .custom-alert button.alert-button {
+    border: 0.55px solid rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.2);
+  }
+  
+  .ios button.alert-button.alert-button-cancel {
+    border-right: 0;
+    border-bottom-left-radius: 13px;
+    border-top-left-radius: 13px;
+  }
+  
+  .ios button.alert-button.alert-button-confirm {
+    border-bottom-right-radius: 13px;
+    border-top-right-radius: 13px;
+  }
+
+
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
+
+/* @import "@ionic/angular/css/palettes/dark.always.css"; */
+/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+@import "@ionic/angular/css/palettes/dark.system.css";
+
+@import url("https://unpkg.com/leaflet@1.9.4/dist/leaflet.css");
+@import url("https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css");
+@import url("https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css");

@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar class="custom-toolbar">
+    <ion-buttons slot="end">
+      <div class="user-status">
+        <span class="status-light"></span>
+        <p class="user-type">{{ usuario.nombre | titlecase }}</p>
+      </div>
+    </ion-buttons>
+
+    <ion-buttons slot="start">
+      <a [routerLink]="['']" class="logo-link">
+        <img id="logomenu" src="assets/images/logo.png" alt="Logo" class="logo-img">
+      </a>
+    </ion-buttons>
+
+    <ion-title class="toolbar-title">
+      <a [routerLink]="['']" class="title-link">MoveGo</a>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="user-info">
+    <ion-card class="info-card">
+      <ion-card-header>
+        <ion-card-title>Hola! {{usuario.nombre}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p><strong>Correo Electrónico:</strong> {{ usuario.correo }}</p>
+        <p><strong>Tipo de Usuario:</strong> {{ usuario.tipo_usuario | titlecase }}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <div class="welcome">
+    <ion-card class="welcome-card">
+      <img src="../../../assets/images/logo.png" alt="Imagen de Bienvenida" class="welcome-image" style="height: 40px ; width:40px ; text-align: center; position: relative;">
+      <ion-card-header>
+        <ion-card-title class="welcome-title">✨ ¡Bienvenido a MoveGo! 🚗💨</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <ion-tabs class="-tabs">
+    <ion-tab-bar slot="bottom" class="tab-bar">
+      <ion-tab-button tab="mis-viajes" *ngIf="usuario.tipo_usuario === 'Conductor'">
+        <ion-icon name="person-outline"></ion-icon>
+        <span class="tab-label">Mis viajes</span>
+      </ion-tab-button>
+      <ion-tab-button tab="administrar-viajes" *ngIf="usuario.tipo_usuario === 'Administrador' || usuario.tipo_usuario === 'Conductor'">
+        <ion-icon name="business-outline"></ion-icon>
+        <span class="tab-label">Administrar Viajes</span>
+      </ion-tab-button>
+      <ion-tab-button tab="viajes" *ngIf="usuario.tipo_usuario === 'Pasajero'">
+        <ion-icon name="car-sport-outline"></ion-icon>
+        <span class="tab-label">Viajes</span>
+      </ion-tab-button>
+      <ion-tab-button tab="viajes-terminados" *ngIf="usuario.tipo_usuario === 'Pasajero'">
+        <ion-icon name="car-sport-outline"></ion-icon>
+        <span class="tab-label">Historial Viajes</span>
+      </ion-tab-button>
+      <ion-tab-button tab="administrador" *ngIf="usuario.tipo_usuario === 'Administrador'">
+        <ion-icon name="business-outline"></ion-icon>
+        <span class="tab-label">Administrar Usuarios</span>
+      </ion-tab-button>
+      <ion-tab-button tab="perfil">
+        <ion-icon name="person-outline"></ion-icon>
+        <span class="tab-label">Perfil</span>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>

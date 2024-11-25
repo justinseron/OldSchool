@@ -1,0 +1,30 @@
+
+<ion-content id="mainlayout">
+  
+  <div id="logo">
+    <img src="assets/images/logo.png">
+  </div>
+
+  <div id="loginuser">
+  <ion-card class="center">
+    <ion-card-header class="ion-text-center">Ingreso de Usuario</ion-card-header>
+    <ion-card-content>
+      <ion-input [(ngModel)]="email" type="email" label="Correo" labelPlacement="stacked" fill="outline" placeholder="ejemplo@duocuc.cl"></ion-input>
+      <br>
+      <ion-input [(ngModel)]="password" type="password" label="Contraseña" labelPlacement="stacked" fill="outline">
+        <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+      </ion-input>
+      <ion-text class="ion-text-right">
+        <p><a href="/recuperar">¿Olvidaste la contraseña?</a></p>
+      </ion-text>
+      <br>
+      <ion-button (click)="login()" size="block" color="secondary" shape="round" id="signinbutton">INGRESAR</ion-button>
+      <br>
+      <ion-text class="ion-text-center">
+        <h2>¿No tienes cuenta? Regístrate <a routerLink="/registro">Aquí</a></h2>
+      </ion-text>
+    </ion-card-content>
+  </ion-card>
+  </div>
+
+</ion-content>
