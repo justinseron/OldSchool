@@ -22,12 +22,9 @@ export class ViajesService {
     if (viajes.length === 0) {
       let nuevosViajes = [
           {
-              "id__viaje": "1",
+              "id__taller": "1",
               "conductor": "Juan Pérez",
               "rut": "8208490-8",
-              "patente": "AABB32",
-              "color_auto": "Rojo",
-              "asientos_disponibles": 2,
               "nombre_destino": "Municipalidad de Puente Alto, 1820, Avenida Concha y Toro",
               "latitud": -33.59523505,
               "longitud": -70.57963843136085,
@@ -96,7 +93,16 @@ export class ViajesService {
               "hora_salida": "12:00",
               "pasajeros": [],
               "estado_viaje": "pendiente",
-          }
+          },
+          {
+            "id__taller": "5",
+            "conductor": "Juan Pérez",
+            "rut": "8208490-8",
+            "nombre_destino": "Manualidades peneales",
+            "hora_salida": "13:00",
+            "pasajeros": [],
+            "estado_viaje": "pendiente",
+          },
       ];
       for (let viaje of nuevosViajes) {
           await this.createViaje(viaje);

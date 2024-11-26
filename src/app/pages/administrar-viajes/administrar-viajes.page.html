@@ -3,7 +3,6 @@
       <h2 style="color: #0056b3;">Formulario de Viaje</h2>
       <p style="font-size: 16px; color: #555;">Por favor, complete todos los campos requeridos.</p>
     </div>
-    <div id="map_html"></div>
     <form [formGroup]="viaje" (ngSubmit)="onSubmit()">
       <ion-list>
         <ion-item>
@@ -16,64 +15,12 @@
         </ion-item>
         <ion-item>
           <ion-label position="stacked">Rut Conductor</ion-label>
-          <ion-input type="text" formControlName="rut" placeholder="Ej: ABC1234"></ion-input>
+          <ion-input type="text" formControlName="rut"></ion-input>
         </ion-item>
         
         <ion-item>
-          <ion-label position="stacked">Patente</ion-label>
-          <ion-input type="text" formControlName="patente" placeholder="Ej: ABC1234"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label position="stacked">Color del Auto</ion-label>
-          <ion-input type="text" formControlName="color_auto" placeholder="Ej: Rojo"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label position="stacked">Asientos Disponibles</ion-label>
-          <ion-input type="number" formControlName="asientos_disponibles" placeholder="Ej: 4"></ion-input>
-        </ion-item>
-
-        <ion-item>
           <ion-label position="stacked">Nombre Destino</ion-label>
           <ion-input type="text" [(ngModel)]="direccion" formControlName="nombre_destino" placeholder="Ej: Playa"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label position="stacked">Latitud</ion-label>
-          <ion-input type="number" [(ngModel)]="latitud" formControlName="latitud" placeholder="Ej: -34.6097"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label position="stacked">Longitud</ion-label>
-          <ion-input type="number" [(ngModel)]="longitud" formControlName="longitud" placeholder="Ej: -58.3816"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label position="stacked">Distancia (metros)</ion-label>
-          <ion-input type="number" [(ngModel)]="distancia_metros" formControlName="distancia_metros" placeholder="Ej: 1500"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label position="stacked">Costo del Viaje</ion-label>
-          <ion-input type="number" formControlName="costo_viaje" placeholder="Ej: 10000"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="stacked">Método de Pago</ion-label>
-          <ion-select formControlName="metodo_pago" (ionChange)="onPaymentMethodChange($event)">
-            <ion-select-option value="tarjeta">Tarjeta</ion-select-option>
-            <ion-select-option value="efectivo">Efectivo</ion-select-option>
-          </ion-select>
-        </ion-item>
-
-        <!-- Campo para el número de tarjeta, visible solo si se selecciona 'tarjeta' -->
-        <ion-item *ngIf="isCardPayment()">
-          <ion-label position="stacked">Número de Tarjeta</ion-label>
-          <ion-input type="text" formControlName="numero_tarjeta" placeholder="Ej: 1234 5678 9101 1121"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="stacked">Duración del Viaje</ion-label>
-          <ion-input type="text" [(ngModel)]="tiempo_segundos" formControlName="duracion_viaje" placeholder="Ej: 30 mins"></ion-input>
         </ion-item>
 
         <ion-item>

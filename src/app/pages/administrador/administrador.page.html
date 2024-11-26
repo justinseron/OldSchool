@@ -48,40 +48,6 @@
         </ion-select>
       </ion-item>
 
-      <ion-item class="form-item tiene-auto-group">
-        <ion-label class="tiene-auto-label">¿Tiene Auto?</ion-label>
-        <ion-radio-group formControlName="tiene_auto">
-          <ion-item>
-            <ion-label>Sí</ion-label>
-            <ion-radio slot="start" value="si"></ion-radio>
-          </ion-item>
-          <ion-item>
-            <ion-label>No</ion-label>
-            <ion-radio slot="start" value="no"></ion-radio>
-          </ion-item>
-        </ion-radio-group>
-      </ion-item>
-
-      <ion-item class="form-item" *ngIf="persona.controls.tiene_auto.value === 'si'">
-        <ion-label position="stacked">Patente auto</ion-label>
-        <ion-input formControlName="patente_auto" type="text"></ion-input>
-      </ion-item>
-
-      <ion-item class="form-item" *ngIf="persona.controls.tiene_auto.value === 'si'">
-        <ion-label position="stacked">Marca auto</ion-label>
-        <ion-input formControlName="marca_auto" type="text"></ion-input>
-      </ion-item>
-
-      <ion-item class="form-item" *ngIf="persona.controls.tiene_auto.value === 'si'">
-        <ion-label position="stacked">Color auto</ion-label>
-        <ion-input formControlName="color_auto" type="text"></ion-input>
-      </ion-item>
-
-      <ion-item class="form-item" *ngIf="persona.controls.tiene_auto.value === 'si'">
-        <ion-label position="stacked">Capacidad de pasajeros</ion-label>
-        <ion-input formControlName="asientos_disponibles" type="text"></ion-input>
-      </ion-item>
-
       <ion-item>
         <ion-label position="stacked">Tipo usuario</ion-label>
         <ion-select formControlName="tipo_usuario">

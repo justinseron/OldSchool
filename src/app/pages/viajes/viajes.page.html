@@ -23,10 +23,6 @@
                   <ion-card-header>
                     <ion-card-title>{{ viaje.nombre_destino | titlecase }}</ion-card-title>
                   </ion-card-header>
-                  <ion-card-content>
-                    <p>Asientos Disponibles: {{ viaje.asientos_disponibles }}</p>
-                    <p>Precio: {{ (viaje.distancia_metros / 200 * 100) | currency:'CLP' }}</p>
-                  </ion-card-content>
                   <ion-button (click)="ver(viaje)" size="block">Ver Detalle</ion-button>
                 </ion-card>
               </div>
@@ -45,12 +41,8 @@
           <ion-card *ngIf="viaje && viaje.estado_viaje === 'pendiente'">
             <ion-card-header>
               <ion-card-title>{{ viaje.nombre_destino }}</ion-card-title>
-              <ion-card-subtitle>Conductor: {{ viaje.conductor | titlecase }}</ion-card-subtitle>
+              <ion-card-subtitle>Colaborador: {{ viaje.conductor | titlecase }}</ion-card-subtitle>
             </ion-card-header>
-            <ion-card-content>
-              <p>Asientos Disponibles: {{ viaje.asientos_disponibles }}</p>
-              <p>Precio: {{ (viaje.distancia_metros / 200 * 100) | currency:'CLP' }}</p>
-            </ion-card-content>
             <ion-button (click)="ver(viaje)" size="block" [disabled]="viaje.asientos_disponibles === 0">
               Ver Detalle
             </ion-button>

@@ -33,11 +33,6 @@ export class UsuarioService {
       "password": "Admin123.",
       "confirm_password": "Admin123.",
       "genero": "otro",
-      "tiene_auto": "no",
-      "patente_auto": "",
-      "marca_auto": "",
-      "color_auto": "",
-      "asientos_disponibles": "",
       "tipo_usuario": "Administrador"
 
     };
@@ -47,14 +42,9 @@ export class UsuarioService {
       "nombre": "Juan Pérez",
       "correo": "juan@duocuc.cl",
       "fecha_nacimiento": "1980-01-01",
-      "password": "Conductor123.",
-      "confirm_password": "Conductor123.",
+      "password": "Colaborador123.",
+      "confirm_password": "Colaborador123..",
       "genero": "masculino",
-      "tiene_auto": "si",
-      "patente_auto": "XYZ123",
-      "marca_auto": "Ford",
-      "color_auto": "Azul",
-      "asientos_disponibles": "4",
       "tipo_usuario": "Colaborador"
     };
   
@@ -63,14 +53,9 @@ export class UsuarioService {
       "nombre": "María López",
       "correo": "maria@duocuc.cl",
       "fecha_nacimiento": "1990-02-02",
-      "password": "Conductor123.",
-      "confirm_password": "Conductor123.",
+      "password": "Colaborador123.",
+      "confirm_password": "Colaborador123.",
       "genero": "femenino",
-      "tiene_auto": "si",
-      "patente_auto": "ABC456",
-      "marca_auto": "Chevrolet",
-      "color_auto": "Rojo",
-      "asientos_disponibles": "4",
       "tipo_usuario": "Colaborador"
     };
     let pasajero1 = {
@@ -78,10 +63,9 @@ export class UsuarioService {
       "nombre": "Carlos Rivera",
       "correo": "carlos@duocuc.cl",
       "fecha_nacimiento": "1995-05-05",
-      "password": "Pasajero123.",
-      "confirm_password": "Pasajero123.",
+      "password": "Usuario123.",
+      "confirm_password": "Usuario123.",
       "genero": "masculino",
-      "tiene_auto": "no",
       "tipo_usuario": "Usuario"
     };
 
@@ -90,10 +74,9 @@ export class UsuarioService {
       "nombre": "Ana Torres",
       "correo": "ana@duocuc.cl",
       "fecha_nacimiento": "1997-07-07",
-      "password": "Pasajero123.",
-      "confirm_password": "Pasajero123.",
+      "password": "Usuario123.",
+      "confirm_password": "Usuario123.",
       "genero": "femenino",
-      "tiene_auto": "no",
       "tipo_usuario": "Usuario"
     };
 

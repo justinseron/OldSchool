@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ViajesService } from 'src/app/services/viajes.service';
 
@@ -7,7 +7,7 @@ import { ViajesService } from 'src/app/services/viajes.service';
   templateUrl: './viajes.page.html',
   styleUrls: ['./viajes.page.scss'],
 })
-export class ViajesPage implements OnInit, AfterViewInit {
+export class ViajesPage implements OnInit {
   viajes: any[] = []; // Lista completa de viajes
   destinosFiltrados: any[] = []; // Viajes filtrados
   misViajes: any[] = []; // Viajes en curso
@@ -87,9 +87,7 @@ export class ViajesPage implements OnInit, AfterViewInit {
   }
   
 
-  ngAfterViewInit() {
-    // Puedes agregar más lógica si es necesario
-  }
+  
 
   onSegmentChange(event: any) {
     this.isBasicoSelected = event.detail.value === 'basico';

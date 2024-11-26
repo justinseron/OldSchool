@@ -44,23 +44,9 @@
       // Inicializa el formulario aquí para una mejor legibilidad
       this.viaje = new FormGroup({
         id__viaje: new FormControl({ value: '', disabled: true }), // Campo solo lectura
-        conductor: new FormControl('',[Validators.required]),
+        conductor: new FormControl('',[]),
         rut:new FormControl('',[]),
-        patente: new FormControl('',[ Validators.pattern("^[A-Z0-9.-]*$"),Validators.maxLength(8)]),
-        color_auto: new FormControl('', [Validators.required]),//*
-        asientos_disponibles: new FormControl('', [
-          Validators.min(2),  // Mayor a 1
-          Validators.max(6),  // Menor a 7
-          Validators.required  // Campo requerido si el usuario tiene auto
-        ]),
         nombre_destino: new FormControl('', [Validators.required]),
-        latitud: new FormControl('', [Validators.required]),
-        longitud: new FormControl('', [Validators.required]),
-        distancia_metros: new FormControl('', [Validators.required]),
-        costo_viaje: new FormControl('',[Validators.min(0), Validators.required]),
-        metodo_pago: new FormControl('efectivo', [Validators.required]),
-        numero_tarjeta:  new FormControl('',[Validators.min(0)]),
-        duracion_viaje: new FormControl('', [Validators.required]),
         hora_salida: new FormControl('', [Validators.required]),
         pasajeros: new FormControl('',[]),
         estado_viaje: new FormControl('pendiente', []),
