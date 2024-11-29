@@ -36,12 +36,11 @@
           </ion-input>
 
           <ion-select formControlName="genero" label="Género" labelPlacement="stacked" placeHolder="Género" fill="outline">
-            <ion-select-option>Masculino</ion-select-option>
-            <ion-select-option>Femenino</ion-select-option>
-            <ion-select-option>Otro</ion-select-option>
-            <ion-select-option>Prefiero no decirlo</ion-select-option>
+            <ion-select-option value="masculino">Masculino</ion-select-option>
+            <ion-select-option value="femenino">Femenino</ion-select-option>
+            <ion-select-option value="otro">Otro</ion-select-option>
           </ion-select>
-          <br>
+          
           <ion-button size="block" [disabled]="persona.invalid" type="submit" color="secondary" shape="round">REGISTRARSE</ion-button>
           <br>
           <p class="ion-text-center">¿Ya tienes una cuenta? Ingresa <a routerLink="/login">aquí</a></p>

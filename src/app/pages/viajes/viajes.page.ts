@@ -25,22 +25,23 @@ export class ViajesPage implements OnInit {
 
   async cargarViajes() {
     const todosLosViajes = await this.viajesService.getViajes(); // Obtener todos los viajes
-    console.log("Todos los viajes desde el almacenamiento:", todosLosViajes); // Log para verificar
+    console.log("Todos los talleres desde el almacenamiento:", todosLosViajes); // Log para depuración
 
-    // Filtrar los viajes disponibles
+    // Filtrar viajes disponibles
     this.viajesDisponibles = todosLosViajes.filter(viaje => 
-        viaje.asientos_disponibles > 0 && // Solo viajes con asientos disponibles
-        !(viaje.pasajeros && viaje.pasajeros.includes(this.usuarioRut)) // Excluir viajes que ya tomó el usuario
+        viaje.estado_viaje === 'pendiente' && // Solo los viajes pendientes
+        !(viaje.pasajeros && viaje.pasajeros.includes(this.usuarioRut)) // Excluir los que ya tomó el usuario
     );
 
     // Filtrar los viajes que el usuario ya ha tomado
     this.misViajes = todosLosViajes.filter(viaje => 
-        viaje.pasajeros.includes(this.usuarioRut) // Incluye viajes donde el usuario es pasajero
+        viaje.pasajeros && viaje.pasajeros.includes(this.usuarioRut) // Incluye los viajes del usuario
     );
 
-    console.log("Viajes Disponibles:", this.viajesDisponibles); // Log para verificar
-    console.log("Mis Viajes:", this.misViajes); // Log para verificar
+    console.log("Talleres Disponibles:", this.viajesDisponibles); // Log para verificar
+    console.log("Mis Talleres:", this.misViajes); // Log para verificar
 }
+
 
 
   filtrarViajes() {
@@ -51,7 +52,7 @@ export class ViajesPage implements OnInit {
       // Mostrar solo los viajes pendientes
       this.destinosFiltrados = this.viajesDisponibles;
     }
-    console.log("Destinos filtrados:", this.destinosFiltrados); // Verifica los destinos filtrados
+    console.log("Talleres filtrados:", this.destinosFiltrados); // Verifica los destinos filtrados
   }
 
   onSearch(event: any) {
@@ -66,23 +67,23 @@ export class ViajesPage implements OnInit {
     const exito = await this.viajesService.tomarViaje(viaje.id__viaje, this.usuarioRut);
     if (exito) {
       await this.cargarViajes(); // Recargar los viajes después de tomar uno
-      console.log("Viaje tomado con éxito");
+      console.log("Taller tomado con éxito");
     } else {
-      console.log("No se puede tomar el viaje.");
-      alert("No se puede tomar el viaje. Puede que ya lo haya tomado o no hay asientos disponibles.");
+      console.log("No se puede tomar el taller.");
+      alert("No se puede tomar el taller.");
     }
   }
   
 
   ver(viaje: any) {
-    console.log('Viaje:', viaje); // Agrega este log para verificar el objeto completo
+    console.log('Taller:', viaje); // Agrega este log para verificar el objeto completo
     const viajeId = viaje.id || viaje.id__viaje; // Verifica si tiene el ID
     if (!viajeId) {
-      console.error('El ID del viaje no está definido:', viaje);
+      console.error('El ID del taller no está definido:', viaje);
       return; // Salir si el ID no está definido
     }
   
-    console.log('ID del viaje:', viajeId); // Verifica el ID del viaje
+    console.log('ID del taller:', viajeId); // Verifica el ID del viaje
     this.router.navigate(['/home/viajes/detalles-viaje', viajeId]);
   }
   

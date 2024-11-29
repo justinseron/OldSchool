@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-import { UsuarioService } from 'src/app/services/usuario.service';
-
+import { FireUsuarioService } from 'src/app/services/fireusuario.service';
+import { LoadingController } from '@ionic/angular';
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.page.html',
@@ -15,19 +15,19 @@ export class RegistroPage implements OnInit {
   persona = new FormGroup({
     rut: new FormControl('',[Validators.minLength(9),Validators.maxLength(10),Validators.required,Validators.pattern("[0-9]{7,8}-[0-9kK]{1}")]),
     nombre: new FormControl('',[Validators.required,Validators.maxLength(20),Validators.pattern("^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\\s]+$") ]),
-    correo: new FormControl('',[Validators.required, Validators.pattern("[a-zA-Z0-9.]")]),
+    correo: new FormControl('',[Validators.required, Validators.pattern("[a-zA-Z0-9.]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")]),
     fecha_nacimiento: new FormControl('',[Validators.required]),
     password: new FormControl('',[Validators.required, Validators.pattern("^(?=.*[-!#$%&/()?¡_.])(?=.*[A-Za-z])(?=.*[a-z]).{8,}$")]),
     confirm_password: new FormControl('',[Validators.required, Validators.pattern("^(?=.*[-!#$%&/()?¡_.])(?=.*[A-Za-z])(?=.*[a-z]).{8,}$")]),
     genero: new FormControl('',[Validators.required]),
-    es_colaborador : new FormControl('no',[]),
-    tipo_usuario: new FormControl('Usuario'),
+    tipo_usuario: new FormControl('Pasajero'),
   });
 
   fotoPerfil: string = 'assets/images/perfildefault.png';
+  correo: any;
 
 
-  constructor(private router: Router, private alertController: AlertController,private usuarioService: UsuarioService) { 
+  constructor(private router: Router, private loadingController: LoadingController,private alertController: AlertController,private fireusuarioService: FireUsuarioService) { 
     this.persona.get("rut")?.setValidators([Validators.required,Validators.pattern("[0-9]{7,8}-[0-9kK]{1}"),this.validarRut()]);
   }
 
@@ -42,6 +42,15 @@ export class RegistroPage implements OnInit {
   
     await alert.present();
   }
+  async mostrarCargando() {
+    const loading = await this.loadingController.create({
+      message: 'Cargando...',
+      spinner: 'crescent',  // Puedes cambiar el tipo de spinner aquí
+      duration: 10000,      // Duración opcional, si quieres que se cierre después de cierto tiempo
+    });
+    await loading.present();
+    return loading;
+  }
   
   
   public async registrar() {
@@ -54,9 +63,9 @@ export class RegistroPage implements OnInit {
       await this.mostrarAlerta("Error", "¡Las contraseñas no coinciden!");
       return;
     }
-    this.persona.controls.tipo_usuario.setValue(this.persona.controls.es_colaborador.value === "si" ? "Colaborador" : "Usuario");
+    this.persona.controls.tipo_usuario.setValue("Usuario");
   
-    if (await this.usuarioService.createUsuario(this.persona.value)) {
+    if (await this.fireusuarioService.crearUsuario(this.persona.value)) {
       this.router.navigate(['/login']);
       this.persona.reset();
       await this.mostrarAlerta("Éxito", "¡Usuario creado con éxito!");

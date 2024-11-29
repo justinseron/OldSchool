@@ -44,7 +44,7 @@ export class DetallesViajePage implements OnInit {
           this.initializeMap();  // Asegúrate de que el mapa se inicialice tras la carga del viaje
         }, 100);  // Espera 100 ms para que el contenedor del mapa esté disponible
       } else {
-        console.error("ID de viaje no proporcionado.");
+        console.error("ID de taller no proporcionado.");
       }
     });
   }
@@ -57,7 +57,7 @@ export class DetallesViajePage implements OnInit {
       this.viajeTomado = this.viaje.pasajeros?.includes(this.usuarioRut) || false;
       this.duracionViajeMinutos = Math.floor(this.viaje.duracion_viaje / 60); // Asumiendo que está en segundos
     } else {
-      console.error("No se pudo cargar el viaje.");
+      console.error("No se pudo cargar el taller.");
     }
   }
 
@@ -147,8 +147,8 @@ export class DetallesViajePage implements OnInit {
       // Verifica si el usuario ya tiene un viaje tomado
       if (this.viajeTomado) {
         const alert = await this.alertController.create({
-          header: 'Viaje en Curso',
-          message: `Ya tienes un viaje en curso. ¿Quieres cancelarlo para tomar el nuevo viaje a ${this.viaje.nombre_destino}?`,
+          header: 'Taller en Curso',
+          message: `Ya tienes un taller en curso. ¿Quieres cancelarlo para tomar el nuevo taller ${this.viaje.nombre_destino}?`,
           buttons: [
             {
               text: 'No',
@@ -163,7 +163,7 @@ export class DetallesViajePage implements OnInit {
                 if (exitoCancelacion) {
                   await this.tomarNuevoViaje(); // Permitir al usuario tomar el nuevo viaje
                 } else {
-                  this.mostrarAlerta('Error', 'No se pudo cancelar el viaje anterior.');
+                  this.mostrarAlerta('Error', 'No se pudo cancelar el taller anterior.');
                 }
               }
             }
@@ -180,8 +180,8 @@ export class DetallesViajePage implements OnInit {
 
   async tomarNuevoViaje() {
     const alert = await this.alertController.create({
-      header: 'Confirmar Toma de Viaje',
-      message: `¿Estás seguro de que quieres tomar el viaje a ${this.viaje.nombre_destino}?`,
+      header: 'Confirmar Toma de Taller',
+      message: `¿Estás seguro de que quieres tomar el taller ${this.viaje.nombre_destino}?`,
       buttons: [
         {
           text: 'Cancelar',
@@ -196,7 +196,8 @@ export class DetallesViajePage implements OnInit {
               this.viajeTomado = true;
               this.router.navigate(['/home/viajes']); // Redirigir a "Mis viajes"
             } else {
-              this.mostrarAlerta('Error', 'No se puede tomar el viaje. Puede que ya lo haya tomado o no hay asientos disponibles.');
+              this.mostrarAlerta('', 'Taller no tomado.');
+              this.router.navigate(['/home/viajes']);
             }
           }
         }
@@ -210,7 +211,7 @@ export class DetallesViajePage implements OnInit {
     if (this.viajeTomado) {
       const alert = await this.alertController.create({
         header: 'Confirmar Cancelación',
-        message: `¿Estás seguro de que quieres cancelar el viaje a ${this.viaje.nombre_destino}?`,
+        message: `¿Estás seguro de que quieres cancelar el taller a ${this.viaje.nombre_destino}?`,
         buttons: [
           {
             text: 'No, regresar',
@@ -225,7 +226,7 @@ export class DetallesViajePage implements OnInit {
                 this.viajeTomado = false;
                 this.router.navigate(['/home/viajes']); // Redirigir a "Mis viajes"
               } else {
-                this.mostrarAlerta('Error', 'No se puede cancelar el viaje. Puede que no lo haya tomado.');
+                this.mostrarAlerta('Error', 'No se puede cancelar el taller.');
               }
             }
           }
@@ -234,7 +235,7 @@ export class DetallesViajePage implements OnInit {
   
       await alert.present();
     } else {
-      this.mostrarAlerta('Sin Viaje en Curso', 'No tienes un viaje en curso que cancelar.');
+      this.mostrarAlerta('Sin Taller en Curso', 'No tienes un taller en curso que cancelar.');
     }
   }
   

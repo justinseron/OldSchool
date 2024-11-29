@@ -7,19 +7,15 @@
         </ion-card-header>
         <ion-card-content class="contenido-card">
           <div class="info-row">
-            <span class="label">Conductor:</span>
+            <span class="label">Colaborador:</span>
             <span class="value">{{ viaje.conductor }}</span>
-          </div>
-          <div class="info-row">
-            <span class="label">Asientos disponibles:</span>
-            <span class="value">{{ viaje.asientos_disponibles }}</span>
           </div>
           <div class="info-row">
             <span class="label">Estado:</span>
             <span class="value">{{ viaje.estado_viaje }}</span>
           </div>
           <div class="pasajeros">
-            <strong>Pasajeros:</strong>
+            <strong>Usuarios:</strong>
             <ion-list>
               <ion-item *ngFor="let rut of viaje.pasajeros" class="pasajero-item">
                 <ion-icon name="person-circle" slot="start" class="icon"></ion-icon>
@@ -29,7 +25,7 @@
               </ion-item>
               <ion-item *ngIf="viaje.pasajeros.length === 0" class="sin-pasajeros">
                 <ion-label>
-                  Aún no hay pasajeros en este viaje.
+                  Aún no hay usuario en este taller.
                 </ion-label>
               </ion-item>
             </ion-list>
@@ -43,7 +39,7 @@
     <ion-card>
       <ion-card-content>
         <ion-label>
-          No tienes viajes creados aún.
+          No tienes talleres creados aún.
         </ion-label>
       </ion-card-content>
     </ion-card>

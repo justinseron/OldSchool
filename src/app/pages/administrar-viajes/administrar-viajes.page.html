@@ -1,12 +1,12 @@
   <ion-content class="ion-padding" style="background-color: #f0f8ff;">
     <div style="text-align: center; margin-bottom: 20px;">
-      <h2 style="color: #0056b3;">Formulario de Viaje</h2>
+      <h2 style="color: #0056b3;">Formulario de Taller</h2>
       <p style="font-size: 16px; color: #555;">Por favor, complete todos los campos requeridos.</p>
     </div>
     <form [formGroup]="viaje" (ngSubmit)="onSubmit()">
       <ion-list>
         <ion-item>
-          <ion-label>Conductor</ion-label>
+          <ion-label>Colaborador</ion-label>
           <ion-select (ionChange)="onConductorChange($event)" interface="popover">
             <ion-select-option *ngFor="let conductor of conductores" [value]="conductor">
               {{ conductor.nombre }} <!-- Asegúrate de que esta propiedad exista -->
@@ -14,23 +14,23 @@
           </ion-select>
         </ion-item>
         <ion-item>
-          <ion-label position="stacked">Rut Conductor</ion-label>
+          <ion-label position="stacked">Rut Colaborador</ion-label>
           <ion-input type="text" formControlName="rut"></ion-input>
         </ion-item>
         
         <ion-item>
-          <ion-label position="stacked">Nombre Destino</ion-label>
+          <ion-label position="stacked">Nombre Taller</ion-label>
           <ion-input type="text" [(ngModel)]="direccion" formControlName="nombre_destino" placeholder="Ej: Playa"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label position="stacked">Hora de Salida</ion-label>
+          <ion-label position="stacked">Hora de Realización</ion-label>
           <ion-input type="time" formControlName="hora_salida"></ion-input>
         </ion-item>
 
         <!-- Campo para el estado del viaje -->
         <ion-item>
-          <ion-label position="stacked">Estado del Viaje</ion-label>
+          <ion-label position="stacked">Estado del Taller</ion-label>
           <ion-select formControlName="estado_viaje">
             <ion-select-option value="pendiente">Pendiente</ion-select-option>
             <ion-select-option value="en_curso">En curso</ion-select-option>
@@ -39,7 +39,7 @@
         </ion-item>
       </ion-list>
 
-      <ion-button expand="full" type="submit" [disabled]="viaje.invalid" style="background-color: #0056b3; color: white; margin-bottom: 10px;">Guardar Viaje</ion-button>
+      <ion-button expand="full" type="submit" [disabled]="viaje.invalid" style="background-color: #0056b3; color: white; margin-bottom: 10px;">Guardar Taller</ion-button>
       <ion-button (click)="modificar()" [disabled]="botonModificar" size="block">Modificar</ion-button>
       <ion-button type="button" expand="full" color="secondary" (click)="limpiar()">Limpiar</ion-button>
     </form>

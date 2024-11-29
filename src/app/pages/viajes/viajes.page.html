@@ -35,20 +35,21 @@
       <!-- Sección "Viajes Disponibles" -->
       <ng-template #disponiblesSection>
         <ion-text class="ion-text-center ion-margin-top">
-          <p style="font-size: 16px; color: #061b30;">Explora todos los talleres disponibles en OldSchool</p>
+            <p style="font-size: 16px; color: #061b30;">Explora todos los talleres disponibles</p>
         </ion-text>
         <div class="ion-padding" *ngFor="let viaje of viajesDisponibles">
-          <ion-card *ngIf="viaje && viaje.estado_viaje === 'pendiente'">
-            <ion-card-header>
-              <ion-card-title>{{ viaje.nombre_destino }}</ion-card-title>
-              <ion-card-subtitle>Colaborador: {{ viaje.conductor | titlecase }}</ion-card-subtitle>
-            </ion-card-header>
-            <ion-button (click)="ver(viaje)" size="block" [disabled]="viaje.asientos_disponibles === 0">
-              Ver Detalle
-            </ion-button>
-          </ion-card>
+            <ion-card *ngIf="viaje.estado_viaje === 'pendiente'">
+                <ion-card-header>
+                    <ion-card-title>{{ viaje.nombre_destino }}</ion-card-title>
+                    <ion-card-subtitle>Colaborador: {{ viaje.conductor }}</ion-card-subtitle>
+                </ion-card-header>
+                <ion-button (click)="ver(viaje)" size="block">
+                    Ver Detalle
+                </ion-button>
+            </ion-card>
         </div>
-      </ng-template>
+    </ng-template>
+    
       
 
       <!-- Mensaje cuando no hay viajes -->

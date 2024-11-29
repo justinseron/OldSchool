@@ -3,82 +3,52 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Detalle Viaje</ion-title>
+    <ion-title>Detalle Taller</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div id="map"></div>
 
   <ion-card class="detalles-viaje" *ngIf="viaje">
     <ion-card-header>
-      <ion-card-title>Detalles del Viaje</ion-card-title>
+      <ion-card-title>Detalles del Taller</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <ion-list>
         <ion-item>
           <ion-icon name="person" slot="start"></ion-icon>
-          <ion-label>Conductor:</ion-label>
+          <ion-label>Colaborador:</ion-label>
           <ion-text slot="end">{{ viaje.conductor }}</ion-text>
         </ion-item>
         <ion-item>
-          <ion-icon name="car" slot="start"></ion-icon>
-          <ion-label>Patente:</ion-label>
-          <ion-text slot="end">{{ viaje.patente }}</ion-text>
-        </ion-item>
-        <ion-item>
-          <ion-icon name="color-fill" slot="start"></ion-icon>
-          <ion-label>Color del Auto:</ion-label>
-          <ion-text slot="end">{{ viaje.color_auto }}</ion-text>
-        </ion-item>
-        <ion-item>
           <ion-icon name="pin" slot="start"></ion-icon>
-          <ion-label>Destino:</ion-label>
+          <ion-label>Nombre del Taller:</ion-label>
           <ion-text slot="end">{{ viaje.nombre_destino }}</ion-text>
         </ion-item>
         <ion-item>
-          <ion-icon name="time" slot="start"></ion-icon>
-          <ion-label>Duración del Viaje:</ion-label>
-          <ion-text slot="end">{{ duracionViajeMinutos }} minuto{{ duracionViajeMinutos !== 1 ? 's' : '' }}</ion-text>
-        </ion-item>
-        <ion-item>
-          <ion-icon name="cash" slot="start"></ion-icon>
-          <ion-label>Costo:</ion-label>
-          <ion-text slot="end">{{ viaje.costo_viaje | currency: 'CLP' }}</ion-text>
-        </ion-item>
-        <ion-item>
-          <ion-icon name="card" slot="start"></ion-icon>
-          <ion-label>Método de Pago:</ion-label>
-          <ion-text slot="end">{{ viaje.metodo_pago }}</ion-text>
-        </ion-item>
-        <ion-item>
           <ion-icon name="time-outline" slot="start"></ion-icon>
-          <ion-label>Hora de Salida:</ion-label>
+          <ion-label>Hora de Realización:</ion-label>
           <ion-text slot="end">{{ viaje.hora_salida }}</ion-text>
         </ion-item>
         <ion-item>
           <ion-icon name="flag" slot="start"></ion-icon>
-          <ion-label>Estado del Viaje:</ion-label>
+          <ion-label>Estado del Taller:</ion-label>
           <ion-text slot="end">{{ viaje.estado_viaje }}</ion-text>
         </ion-item>
-        <ion-item>
-          <ion-icon name="people" slot="start"></ion-icon>
-          <ion-label>Asientos Disponibles:</ion-label>
-          <ion-text slot="end">{{ viaje.asientos_disponibles }}</ion-text>
-        </ion-item>
+
       </ion-list>
     </ion-card-content>
   </ion-card>
 
   <ion-card *ngIf="!viaje">
     <ion-card-content>
-      <p>Detalles del viaje no disponibles.</p>
+      <p>Detalles del taller no disponibles.</p>
     </ion-card-content>
   </ion-card>
 </ion-content>
 
 <ion-button expand="full" color="danger" *ngIf="viajeTomado" (click)="cancelarViaje()">
-  Cancelar Viaje
+  Cancelar Taller
 </ion-button>
 
 <ion-button expand="full" color="primary" *ngIf="viajeTomado" (click)="volver()">
@@ -86,5 +56,5 @@
 </ion-button>
 
 <ion-button expand="full" color="warning" *ngIf="!viajeTomado" (click)="confirmarTomaViaje()">
-  Tomar Viaje
+  Tomar Taller
 </ion-button>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UsuarioService } from 'src/app/services/usuario.service';
+import { FireUsuarioService } from 'src/app/services/fireusuario.service';
 import { AlertController } from '@ionic/angular';
 
 @Component({
@@ -14,7 +14,7 @@ export class LoginPage implements OnInit {
   email: string = "";
   password: string = "";
 
-  constructor(private router: Router,private alertController: AlertController, private usuarioService: UsuarioService) { }
+  constructor(private router: Router,private alertController: AlertController, private fireUsuarioService: FireUsuarioService) { }
 
   ngOnInit() {
   }
@@ -26,10 +26,16 @@ export class LoginPage implements OnInit {
   }
 
   async login(){
-    if(await this.usuarioService.login(this.email,this.password)){
-      this.router.navigate(['/home']);
-    }else{
-      alert("CORREO O CONTRASEÑA INCORRECTOS!");
+    const result = await this.fireUsuarioService.login(this.email, this.password);
+      if(result){
+        this.router.navigate(['/home']);
+      }else{
+        const alert = await this.alertController.create({
+          header: 'Error',
+          message: 'CORREO O CONTRASEÑA INCORRECTOS!',
+          buttons: ['Aceptar'],
+        });
+        await alert.present();
     }
   }
 }
