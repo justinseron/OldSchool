@@ -50,6 +50,7 @@ export class AdministrarViajesPage implements OnInit {
       rut:new FormControl('',[]),
       nombre_destino: new FormControl('', [Validators.required]),
       estado_viaje: new FormControl('pendiente', []),
+      hora_salida:new FormControl('',[])
     });
     this.loadViajes();
     this.cargarConductores();
@@ -64,7 +65,7 @@ export class AdministrarViajesPage implements OnInit {
 
     this.fireUsuarioService.usuarios$.subscribe((usuarios) => {
       this.conductores = usuarios.filter(
-        (usuario) => usuario.tipo_usuario === 'Conductor'
+        (usuario) => usuario.tipo_usuario === 'Colaborador' 
       );
       console.log(this.conductores);
     });
@@ -91,7 +92,6 @@ export class AdministrarViajesPage implements OnInit {
         conductor: conductorSeleccionado.nombre, // Asigna el nombre al campo solo lectura
         patente: conductorSeleccionado.patente_auto,
         color_auto: conductorSeleccionado.color_auto,
-        asientos_disponibles: conductorSeleccionado.asientos_disponibles,
         rut: conductorSeleccionado.rut,
       });
     } 
@@ -163,18 +163,18 @@ export class AdministrarViajesPage implements OnInit {
       if (viajeCreado) {
         this.viajes = await this.fireViajesService.getViajes();
         loading.dismiss();
-        await this.mostrarAlerta('Éxito', 'Viaje creado con éxito!');
+        await this.mostrarAlerta('Éxito', 'Taller creado con éxito!');
         this.limpiar();  // Limpia el formulario después de crear el viaje
       } else {
-        await this.mostrarAlerta('Error', 'ERROR! Viaje no creado');
+        await this.mostrarAlerta('Error', 'ERROR! Taller no creado');
       }
     }
   }
-
+  
   async buscar(id__viaje: string) {
     const loading = await this.mostrarCargando();
     loading.dismiss();
-    console.log('Buscando viaje con ID de Firebase:', id__viaje);
+    console.log('Buscando Taller con ID de Firebase:', id__viaje);
   
     const viajeData = await this.fireViajesService.getViaje(id__viaje);
     if (viajeData) {
@@ -207,7 +207,7 @@ export class AdministrarViajesPage implements OnInit {
         this.mostrarRuta(origenLat, origenLng, destinoLat, destinoLng);
       }
     } else {
-      await this.mostrarAlerta('Error', 'Viaje no encontrado.');
+      await this.mostrarAlerta('Error', 'Taller no encontrado.');
     }
   }
   
@@ -226,14 +226,14 @@ export class AdministrarViajesPage implements OnInit {
         await this.fireViajesService.updateViaje(idViaje, this.viaje.value);
         this.viajes = await this.fireViajesService.getViajes();
         loading.dismiss();
-        await this.mostrarAlerta('Éxito', '¡Viaje modificado con éxito!');
+        await this.mostrarAlerta('Éxito', 'Taller modificado con éxito!');
         this.botonModificar = true;
         this.limpiar();
       } catch (error) {
-        await this.mostrarAlerta('Error', '¡Error! Viaje no modificado.');
+        await this.mostrarAlerta('Error', '¡Error! Taller no modificado.');
       }
     } else {
-      await this.mostrarAlerta('Error', 'Por favor, proporciona un ID de viaje válido.');
+      await this.mostrarAlerta('Error', 'Por favor, proporciona un ID de Taller válido.');
     }
   }
   
@@ -243,7 +243,7 @@ export class AdministrarViajesPage implements OnInit {
     // Primero, solo muestra la alerta de confirmación
     const confirmacion = await this.presentConfirmAlert(
       'Confirmar Eliminación',
-      '¿Estás seguro de que deseas eliminar este Viaje?',
+      '¿Estás seguro de que deseas eliminar este Taller?',
       async () => {
         // Ahora que el usuario ha confirmado, muestra el cargando
         const loading = await this.mostrarCargando();
@@ -255,13 +255,13 @@ export class AdministrarViajesPage implements OnInit {
             this.limpiar();
             this.resetMap();
             loading.dismiss();  // Cierra el loading después de la eliminación
-            await this.mostrarAlerta('Éxito', '¡Viaje eliminado con éxito!');
+            await this.mostrarAlerta('Éxito', 'Taller eliminado con éxito!');
           } else {
-            throw new Error('Error en la eliminación del viaje');
+            throw new Error('Error en la eliminación del Taller');
           }
         } catch (error) {
           loading.dismiss();  // Asegúrate de cerrar el loading en caso de error también
-          await this.mostrarAlerta('Error', '¡Error! Viaje no eliminado.');
+          await this.mostrarAlerta('Error', '¡Error! Taller no eliminado.');
         }
       }
     );

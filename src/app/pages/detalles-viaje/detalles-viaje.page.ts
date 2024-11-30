@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { UsuarioService } from 'src/app/services/usuario.service';
-import { ViajesService } from 'src/app/services/viajes.service';
+import { FireviajesService } from 'src/app/services/fireviajes.service';
 import * as L from 'leaflet';  // Importar Leaflet
 
 @Component({
@@ -11,7 +11,7 @@ import * as L from 'leaflet';  // Importar Leaflet
   styleUrls: ['./detalles-viaje.page.scss'],
 })
 export class DetallesViajePage implements OnInit {
-  id: number = 0;
+  id: string = "";
   usuarioRut: string = "";
   viaje: any;
   latitud: number = 0;
@@ -28,7 +28,7 @@ export class DetallesViajePage implements OnInit {
     private router: Router,
     private alertController: AlertController,
     private activatedRoute: ActivatedRoute,
-    private viajesService: ViajesService,
+    private fireViajesService: FireviajesService,
     private usuarioService: UsuarioService
   ) {}
 
@@ -36,7 +36,7 @@ export class DetallesViajePage implements OnInit {
     this.usuarioRut = localStorage.getItem("userRut") || '';
   
     this.activatedRoute.paramMap.subscribe(async (params) => {
-      this.id = Number(params.get('id'));
+      this.id = params.get('id') || "";
   
       if (this.id) {
         await this.loadViaje(this.id);
@@ -49,8 +49,8 @@ export class DetallesViajePage implements OnInit {
     });
   }
 
-  async loadViaje(id: number) {
-    this.viaje = await this.viajesService.getViaje(id);
+  async loadViaje(id: string) {
+    this.viaje = await this.fireViajesService.getViaje(id);
     if (this.viaje) {
       this.latitud = this.viaje.latitud;  // Obtener latitud del viaje
       this.longitud = this.viaje.longitud;  // Obtener longitud del viaje
@@ -159,7 +159,7 @@ export class DetallesViajePage implements OnInit {
               text: 'Sí',
               handler: async () => {
                 // Cancelar el viaje anterior
-                const exitoCancelacion = await this.viajesService.cancelarViaje(this.viaje.id__viaje, this.usuarioRut);
+                const exitoCancelacion = await this.fireViajesService.cancelarViaje(this.viaje.id__viaje, this.usuarioRut);
                 if (exitoCancelacion) {
                   await this.tomarNuevoViaje(); // Permitir al usuario tomar el nuevo viaje
                 } else {
@@ -191,7 +191,7 @@ export class DetallesViajePage implements OnInit {
         {
           text: 'Confirmar',
           handler: async () => {
-            const exito = await this.viajesService.tomarViaje(this.viaje.id__viaje, this.usuarioRut);
+            const exito = await this.fireViajesService.tomarViaje(this.viaje.id__viaje, this.usuarioRut);
             if (exito) {
               this.viajeTomado = true;
               this.router.navigate(['/home/viajes']); // Redirigir a "Mis viajes"
@@ -221,7 +221,7 @@ export class DetallesViajePage implements OnInit {
           {
             text: 'Sí, cancelar',
             handler: async () => {
-              const exito = await this.viajesService.cancelarViaje(this.viaje.id__viaje, this.usuarioRut);
+              const exito = await this.fireViajesService.cancelarViaje(this.viaje.id__viaje, this.usuarioRut);
               if (exito) {
                 this.viajeTomado = false;
                 this.router.navigate(['/home/viajes']); // Redirigir a "Mis viajes"

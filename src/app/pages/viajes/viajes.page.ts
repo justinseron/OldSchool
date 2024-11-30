@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ViajesService } from 'src/app/services/viajes.service';
+import { FireviajesService } from 'src/app/services/fireviajes.service';
 
 @Component({
   selector: 'app-viajes',
@@ -16,7 +16,7 @@ export class ViajesPage implements OnInit {
   isBasicoSelected: boolean = true; // Control del segmento de selección
   usuarioRut: string = ''; // Almacenar el RUT del usuario
 
-  constructor(private router: Router, private viajesService: ViajesService) {}
+  constructor(private router: Router, private fireViajesService: FireviajesService) {}
 
   async ngOnInit() {
     this.usuarioRut = localStorage.getItem("userRut") || ''; // Obtiene el RUT del usuario
@@ -24,8 +24,8 @@ export class ViajesPage implements OnInit {
   }
 
   async cargarViajes() {
-    const todosLosViajes = await this.viajesService.getViajes(); // Obtener todos los viajes
-    console.log("Todos los talleres desde el almacenamiento:", todosLosViajes); // Log para depuración
+    const todosLosViajes = await this.fireViajesService.getViajes(); // Obtener todos los viajes
+    console.log("Todos los viajes desde el almacenamiento:", todosLosViajes); // Log para depuración
 
     // Filtrar viajes disponibles
     this.viajesDisponibles = todosLosViajes.filter(viaje => 
@@ -40,9 +40,7 @@ export class ViajesPage implements OnInit {
 
     console.log("Talleres Disponibles:", this.viajesDisponibles); // Log para verificar
     console.log("Mis Talleres:", this.misViajes); // Log para verificar
-}
-
-
+  }
 
   filtrarViajes() {
     if (this.isBasicoSelected) {
@@ -64,7 +62,7 @@ export class ViajesPage implements OnInit {
   }
 
   async tomarViaje(viaje: any) {
-    const exito = await this.viajesService.tomarViaje(viaje.id__viaje, this.usuarioRut);
+    const exito = await this.fireViajesService.tomarViaje(viaje.id__viaje, this.usuarioRut);
     if (exito) {
       await this.cargarViajes(); // Recargar los viajes después de tomar uno
       console.log("Taller tomado con éxito");
@@ -73,7 +71,6 @@ export class ViajesPage implements OnInit {
       alert("No se puede tomar el taller.");
     }
   }
-  
 
   ver(viaje: any) {
     console.log('Taller:', viaje); // Agrega este log para verificar el objeto completo
@@ -82,13 +79,10 @@ export class ViajesPage implements OnInit {
       console.error('El ID del taller no está definido:', viaje);
       return; // Salir si el ID no está definido
     }
-  
+
     console.log('ID del taller:', viajeId); // Verifica el ID del viaje
     this.router.navigate(['/home/viajes/detalles-viaje', viajeId]);
   }
-  
-
-  
 
   onSegmentChange(event: any) {
     this.isBasicoSelected = event.detail.value === 'basico';

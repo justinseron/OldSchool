@@ -20,7 +20,7 @@ export class RegistroPage implements OnInit {
     password: new FormControl('',[Validators.required, Validators.pattern("^(?=.*[-!#$%&/()?¡_.])(?=.*[A-Za-z])(?=.*[a-z]).{8,}$")]),
     confirm_password: new FormControl('',[Validators.required, Validators.pattern("^(?=.*[-!#$%&/()?¡_.])(?=.*[A-Za-z])(?=.*[a-z]).{8,}$")]),
     genero: new FormControl('',[Validators.required]),
-    tipo_usuario: new FormControl('Pasajero'),
+    tipo_usuario: new FormControl('Usuario'),
   });
 
   fotoPerfil: string = 'assets/images/perfildefault.png';

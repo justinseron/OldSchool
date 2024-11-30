@@ -37,17 +37,7 @@ export class FireviajesService {
 
             "conductor": "Juan Morales",
             "rut": "11219292-1",
-            "patente": "AABB32",
-            "color_auto": "Rojo",
-            "asientos_disponibles": 2,
-            "nombre_destino": "Municipalidad de Puente Alto, 1820, Avenida Concha y Toro",
-            "latitud": -33.59438502707742,
-            "longitud": -70.57948452698899,   
-            "distancia_metros": 1939.2,
-            "costo_viaje": 2000,
-            "metodo_pago": "efectivo",
-            "numero_tarjeta": "",
-            "duracion_viaje": 150,
+            "nombre_destino": "123456",
             "hora_salida": "13:00",
             "pasajeros": [],
             "estado_viaje": "pendiente",
@@ -171,9 +161,7 @@ export class FireviajesService {
             }
 
             // Agregar el viaje cancelado de nuevo a "Viajes Disponibles"
-            if (viajePendiente.asientos_disponibles > 0 && !viajePendiente.pasajeros.includes(usuarioRut)) {
-                this.viajesDisponibles.push(viajePendiente);
-            }
+            this.viajesDisponibles.push(viajePendiente);
         }
     }
 
@@ -189,43 +177,32 @@ export class FireviajesService {
             return false; // El usuario ya tomó este viaje
         }
 
-        // Verificar si el viaje está pendiente y tiene asientos disponibles
+        // Añadir al pasajero
+        viajeTomado.pasajeros.push(usuarioRut);
+
+        // Cambiar el estado a "en curso" si el viaje está pendiente
         if (viajeTomado.estado_viaje === "pendiente") {
-            if (viajeTomado.asientos_disponibles === 0) {
-                alert("Este viaje está pendiente y no tiene asientos disponibles.");
-                return false; // No se puede tomar el viaje porque está pendiente y no tiene asientos
-            }
+            viajeTomado.estado_viaje = "en curso"; // Cambiar estado a "en curso" cuando se toma el viaje
         }
 
-        // Si el viaje tiene asientos disponibles y no está pendiente, se puede tomar
-        if (viajeTomado.asientos_disponibles > 0) {
-            viajeTomado.pasajeros.push(usuarioRut); // Añadir al pasajero
-            viajeTomado.asientos_disponibles -= 1; // Disminuir asientos disponibles
+        // Actualizar la lista de viajes en el almacenamiento
+        await this.updateViaje(viajeTomado.id__viaje, viajeTomado);
 
-            // Cambiar el estado a "en curso" si no hay asientos disponibles
-            if (viajeTomado.asientos_disponibles === 0 && viajeTomado.estado_viaje === "pendiente") {
-                viajeTomado.estado_viaje = "en curso"; // Cambiar estado a "en curso" cuando los asientos están completos
-            }
-
-            // Actualizar la lista de viajes en el almacenamiento
-            await this.updateViaje(viajeTomado.id__viaje, viajeTomado);
-
-            // Mover el viaje a "Mis viajes" si no existe
-            if (!this.misViajes.find(v => v.id__viaje === viajeTomado.id__viaje)) {
-                this.misViajes.push(viajeTomado);
-            }
-
-            // Eliminar de "Viajes disponibles"
-            this.viajesDisponibles = this.viajesDisponibles.filter(v => v.id__viaje !== viajeTomado.id__viaje);
-
-            return true; // Retornar éxito
-        } else {
-            alert("Este viaje está pendiente o no tiene asientos disponibles.");
+        // Mover el viaje a "Mis viajes" si no existe
+        if (!this.misViajes.find(v => v.id__viaje === viajeTomado.id__viaje)) {
+            this.misViajes.push(viajeTomado);
         }
+
+        // Eliminar de "Viajes disponibles"
+        this.viajesDisponibles = this.viajesDisponibles.filter(v => v.id__viaje !== viajeTomado.id__viaje);
+        alert("Taller tomado con éxito.");
+        return true; // Retornar éxito
+        
     }
 
     return false; // No se pudo tomar el viaje
 }
+
 
 
 

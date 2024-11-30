@@ -21,7 +21,7 @@ export class AdministradorPage implements OnInit {
     confirm_password: new FormControl('', [Validators.required, Validators.pattern("^(?=.*[-!#$%&/()?¡_.])(?=.*[A-Za-z])(?=.*[a-z]).{8,}$")]),
     genero: new FormControl('', [Validators.required]),
     tiene_auto: new FormControl('no', []),
-    patente_auto: new FormControl('', [Validators.pattern("^[A-Z0-9.-]*$"), Validators.maxLength(8)]),
+    patente_auto: new FormControl('', []),
     marca_auto: new FormControl('', []),
     color_auto: new FormControl('', []),
     asientos_disponibles: new FormControl('', [Validators.min(2), Validators.max(6)]),
@@ -59,7 +59,7 @@ export class AdministradorPage implements OnInit {
   actualizarTipoUsuario(tieneAuto: string) {
     const tipoUsuarioControl = this.persona.get('tipo_usuario');
     if (tipoUsuarioControl) {
-      tipoUsuarioControl.setValue(tieneAuto === 'si' ? 'Conductor' : 'Pasajero');
+      tipoUsuarioControl.setValue(tieneAuto === 'si' ? 'Colaborador' : 'Usuario');
     }
   }
 
@@ -114,22 +114,28 @@ export class AdministradorPage implements OnInit {
 
   async registrar() {
     const loading = await this.mostrarCargando();
+  
     if (!this.validarEdad18(this.persona.controls.fecha_nacimiento.value || "")) {
       loading.dismiss();
       await this.mostrarAlerta("Error", "¡Debe tener al menos 18 años para registrarse!");
       return;
     }
-
+  
     if (this.persona.controls.password.value !== this.persona.controls.confirm_password.value) {
       loading.dismiss();
       await this.mostrarAlerta("Error", "¡Las contraseñas no coinciden!");
       return;
     }
-
+  
     const tieneAuto = this.persona.controls.tiene_auto.value ?? 'no';
     this.actualizarTipoUsuario(tieneAuto);
-
-    if (await this.fireUsuarioService.crearUsuario(this.persona.value)) {
+  
+    const usuarioData = {
+      ...this.persona.value,
+      tipo_usuario: 'Colaborador', // Aseguramos que el tipo_usuario sea Colaborador si corresponde
+    };
+  
+    if (await this.fireUsuarioService.crearUsuario(usuarioData)) {
       loading.dismiss();
       await this.mostrarAlerta("Éxito", "¡Usuario registrado con éxito!");
       this.persona.reset();
@@ -162,15 +168,6 @@ export class AdministradorPage implements OnInit {
     if (!this.validarEdad18(this.persona.controls.fecha_nacimiento.value || "")) {
       console.log("Edad no válida");
       await this.mostrarAlerta("Error", "¡El usuario debe tener al menos 18 años para modificar sus datos!");
-      return;
-    }
-  
-    // Validación de correo
-    console.log("Validando correo...");
-    const correo = this.persona.controls.correo.value;
-    if (correo && !correo.endsWith('@duocuc.cl')) {
-      console.log("Correo inválido");
-      await this.mostrarAlerta("Error", "¡El correo debe ser institucional (terminar con @duocuc.cl)!");
       return;
     }
   
