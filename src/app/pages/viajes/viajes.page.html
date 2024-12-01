@@ -5,6 +5,9 @@
 
       <!-- Segmento para selección de tipo de viaje -->
       <ion-segment mode="ios" value="basico" (ionChange)="onSegmentChange($event)" color="primary">
+        <ion-segment-button value="basico">
+          <ion-label>Mis Talleres</ion-label>
+        </ion-segment-button>
         <ion-segment-button value="priority">
           <ion-label>Talleres Disponibles</ion-label>
         </ion-segment-button>
@@ -16,7 +19,7 @@
           <div class="ion-padding">
             <ng-container *ngIf="misViajes && misViajes.length > 0; else noHayViajes">
               <div *ngFor="let viaje of misViajes">
-                <ion-card *ngIf="viaje && viaje.nombre_destino && viaje.asientos_disponibles !== undefined">
+                <ion-card *ngIf="viaje && viaje.nombre_destino">
                   <ion-card-header>
                     <ion-card-title>{{ viaje.nombre_destino | titlecase }}</ion-card-title>
                   </ion-card-header>

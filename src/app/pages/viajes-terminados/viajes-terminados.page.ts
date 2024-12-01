@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ViajesService } from 'src/app/services/viajes.service';
+import { FireviajesService } from 'src/app/services/fireviajes.service';
 
 @Component({
   selector: 'app-viajes-terminados',
@@ -9,14 +9,14 @@ import { ViajesService } from 'src/app/services/viajes.service';
 export class ViajesTerminadosPage implements OnInit {
   viajesTerminados: any[] = [];
 
-  constructor(private viajesService: ViajesService) { }
+  constructor(private fireViajesService: FireviajesService ) { }
 
   ngOnInit() {
     this.cargarViajesTerminados();  
   }
 
   async cargarViajesTerminados() {
-    const todosLosViajes = await this.viajesService.getViajes(); // Obtener todos los viajes
+    const todosLosViajes = await this.fireViajesService.getViajes(); // Obtener todos los viajes
     this.viajesTerminados = todosLosViajes.filter((viaje: any) => viaje.estado_viaje === 'terminado'); // Filtrar los viajes terminados
   }
 }

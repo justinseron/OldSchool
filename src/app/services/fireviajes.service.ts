@@ -195,9 +195,8 @@ export class FireviajesService {
 
         // Eliminar de "Viajes disponibles"
         this.viajesDisponibles = this.viajesDisponibles.filter(v => v.id__viaje !== viajeTomado.id__viaje);
-        alert("Taller tomado con éxito.");
+
         return true; // Retornar éxito
-        
     }
 
     return false; // No se pudo tomar el viaje

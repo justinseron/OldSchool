@@ -26,21 +26,24 @@ export class ViajesPage implements OnInit {
   async cargarViajes() {
     const todosLosViajes = await this.fireViajesService.getViajes(); // Obtener todos los viajes
     console.log("Todos los viajes desde el almacenamiento:", todosLosViajes); // Log para depuración
-
-    // Filtrar viajes disponibles
+  
+    // Filtrar viajes disponibles (estado "pendiente")
     this.viajesDisponibles = todosLosViajes.filter(viaje => 
         viaje.estado_viaje === 'pendiente' && // Solo los viajes pendientes
         !(viaje.pasajeros && viaje.pasajeros.includes(this.usuarioRut)) // Excluir los que ya tomó el usuario
     );
-
-    // Filtrar los viajes que el usuario ya ha tomado
+  
+    // Filtrar los viajes que el usuario ya ha tomado y no están en estado "terminado"
     this.misViajes = todosLosViajes.filter(viaje => 
-        viaje.pasajeros && viaje.pasajeros.includes(this.usuarioRut) // Incluye los viajes del usuario
+        viaje.pasajeros && 
+        viaje.pasajeros.includes(this.usuarioRut) && // Incluye los viajes del usuario
+        viaje.estado_viaje !== 'terminado' // Excluir los viajes terminados
     );
-
-    console.log("Talleres Disponibles:", this.viajesDisponibles); // Log para verificar
-    console.log("Mis Talleres:", this.misViajes); // Log para verificar
+  
+    console.log("Viajes Disponibles:", this.viajesDisponibles); // Log para verificar
+    console.log("Mis Viajes:", this.misViajes); // Log para verificar
   }
+  
 
   filtrarViajes() {
     if (this.isBasicoSelected) {
