@@ -20,11 +20,11 @@ export class AdministradorPage implements OnInit {
     password: new FormControl('', [Validators.required, Validators.pattern("^(?=.*[-!#$%&/()?¡_.])(?=.*[A-Za-z])(?=.*[a-z]).{8,}$")]),
     confirm_password: new FormControl('', [Validators.required, Validators.pattern("^(?=.*[-!#$%&/()?¡_.])(?=.*[A-Za-z])(?=.*[a-z]).{8,}$")]),
     genero: new FormControl('', [Validators.required]),
-    tiene_auto: new FormControl('no', []),
+    tiene_auto: new FormControl('', []),
     patente_auto: new FormControl('', []),
     marca_auto: new FormControl('', []),
     color_auto: new FormControl('', []),
-    asientos_disponibles: new FormControl('', [Validators.min(2), Validators.max(6)]),
+    asientos_disponibles: new FormControl('', []),
     tipo_usuario: new FormControl('', [Validators.required]),
   });
 

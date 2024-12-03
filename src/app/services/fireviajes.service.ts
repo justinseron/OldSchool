@@ -182,7 +182,7 @@ export class FireviajesService {
 
         // Cambiar el estado a "en curso" si el viaje está pendiente
         if (viajeTomado.estado_viaje === "pendiente") {
-            viajeTomado.estado_viaje = "en curso"; // Cambiar estado a "en curso" cuando se toma el viaje
+            viajeTomado.estado_viaje = "pendiente"; // Cambiar estado a "en curso" cuando se toma el viaje
         }
 
         // Actualizar la lista de viajes en el almacenamiento

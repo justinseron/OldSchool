@@ -48,7 +48,7 @@ export class ViajesPage implements OnInit {
   filtrarViajes() {
     if (this.isBasicoSelected) {
       // Mostrar solo los viajes en curso
-      this.destinosFiltrados = this.misViajes.filter(viaje => viaje.estado_viaje === 'en_curso');
+      this.destinosFiltrados = this.misViajes.filter(viaje => viaje.estado_viaje === 'pendiente');
     } else {
       // Mostrar solo los viajes pendientes
       this.destinosFiltrados = this.viajesDisponibles;
@@ -87,9 +87,10 @@ export class ViajesPage implements OnInit {
     this.router.navigate(['/home/viajes/detalles-viaje', viajeId]);
   }
 
-  onSegmentChange(event: any) {
+  async onSegmentChange(event: any) {
     this.isBasicoSelected = event.detail.value === 'basico';
     this.filtrarViajes();
+    await this.cargarViajes();
   }
 
   onDestinoSelect(destino: string) {

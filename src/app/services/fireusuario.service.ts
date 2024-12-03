@@ -143,14 +143,24 @@ export class FireUsuarioService {
     return null; // Retorna null si no se encontró el usuario
   }
 
-  public updateUsuario(usuario: any, value: Partial<{ rut: string | null; nombre: string | null; correo: string | null; fecha_nacimiento: string | null; password: string | null; confirm_password: string | null; genero: string | null; tipo_usuario: string | null; }>): Promise<boolean> {
-    return this.fireStore.collection('usuarios').doc(usuario.rut).update(usuario).then(() => {
+  public updateUsuario(usuario: any, value: Partial<{ rut: string | null; nombre: string | null; correo: string | null; fecha_nacimiento: string | null; password: string | null; confirm_password: string | null; genero: string | null; tipo_usuario: string | null }>): Promise<boolean> {
+    // Si 'value' está vacío, no hacemos nada
+    if (!value || Object.keys(value).length === 0) {
+      return Promise.resolve(false);
+    }
+  
+    return this.fireStore.collection('usuarios').doc(usuario.rut).update(value).then(() => {
+      // Si el usuario actualizado es el mismo que el logueado, actualizamos el localStorage
       if (usuario.rut === this.getRUTLogueado()) {
-        localStorage.setItem('usuario', JSON.stringify(usuario));  // Actualiza los datos en el almacenamiento local
+        const updatedUsuario = { ...usuario, ...value };  // Fusionamos los valores actuales con los actualizados
+        localStorage.setItem('usuario', JSON.stringify(updatedUsuario));  // Actualiza los datos en el almacenamiento local
       }
-      return true;
-    }).catch(() => false);
+      return true; // Operación exitosa
+    }).catch(() => {
+      return false; // En caso de error
+    });
   }
+  
   
 
   public async deleteUsuario(rut: string): Promise<boolean> {
