@@ -58,7 +58,7 @@
       </ion-item>
 
       <ion-button [disabled]="persona.invalid" type="submit" size="block" color="warning">Registrar</ion-button>
-      <ion-button [disabled]="!botonModificar || !persona.valid" (click)="modificar()" size="block" color="dark">Modificar</ion-button>
+      <ion-button [disabled]="!botonModificar" (click)="modificar()" size="block" color="dark">Modificar</ion-button>
       <ion-button type="reset" size="block" color="secondary">Limpiar</ion-button>
     
     </form>

@@ -211,13 +211,6 @@ export class AdministrarViajesPage implements OnInit {
     }
   }
   
-  
-  
-
-  
-  
-  
-  
   async modificar() {
     const loading = await this.mostrarCargando();
     const idViaje = this.viaje.get('id__viaje')?.value;

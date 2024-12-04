@@ -54,8 +54,8 @@ export class RegistroPage implements OnInit {
   
   
   public async registrar() {
-    if (!this.validarEdad18(this.persona.controls.fecha_nacimiento.value || "")) {
-      await this.mostrarAlerta("Error", "¡Debe tener al menos 18 años para registrarse!");
+    if (!this.validarEdad60(this.persona.controls.fecha_nacimiento.value || "")) {
+      await this.mostrarAlerta("Error", "¡Debe tener al menos 60 años para registrarse!");
       return;
     }
   
@@ -75,18 +75,11 @@ export class RegistroPage implements OnInit {
 
   //Validador con variables necesarias. validadorDeEdad control por defecto de Angular contra errores, para validaciones se usa AbstractControl
   //el key string boolean null es para los mensajes de alerta mas que nada, el key string es para identificar cada error por la alerta por ej :dateTooOld o AgeTooYoung etc
-  validarEdad18(fecha_nacimiento: string){
-    var edad = 0;
-    if(fecha_nacimiento){
-      const fecha_date = new Date(fecha_nacimiento);
-      const timeDiff = Math.abs(Date.now() - fecha_date.getTime());
-      edad = Math.floor((timeDiff / (1000 * 3600 * 24))/365);
-    }
-    if(edad>=18){
-      return true;
-    }else{
-      return false;
-    }
+  validarEdad60(fecha_nacimiento: string) {
+    const fecha_date = new Date(fecha_nacimiento);
+    const timeDiff = Math.abs(Date.now() - fecha_date.getTime());
+    const edad = Math.floor(timeDiff / (1000 * 3600 * 24) / 365);
+    return edad >= 60;
   }
 
   /*  BENDITO SEA   ^
